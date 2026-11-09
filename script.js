@@ -74,22 +74,229 @@
       });
     });
   }
-  /* ---------- Expand project groups ---------- */
-  $$('[data-see-more]').forEach((button) => {
-    button.addEventListener('click', () => {
-      const group = button.dataset.seeMore;
-      const groupCards = {
-        research: '#research-projects',
-        leadership: '#leadership-projects',
-        academic: '#academic-projects'
-      };
-      const grid = $(groupCards[group]);
+  /* ---------- Projects: carousels, details popup, fullscreen viewer ---------- */
+  const IMG_THUMB = (name) => `images/web/thumb/${name}.webp`;
+  const IMG_FULL = (name) => `images/web/full/${name}.webp`;
+  const imagesOf = (card) => (card.dataset.images || '').split(/\s+/).filter(Boolean);
+  const FULLSCREEN_ICON = '<svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
 
-      if (!grid) return;
+  const makeImg = (src, alt, lazy = true) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = alt;
+    img.decoding = 'async';
+    if (lazy) img.loading = 'lazy';
+    return img;
+  };
 
-      $$('.project-extra', grid).forEach((card) => card.classList.remove('hidden'));
-      button.remove();
+  /* Focus trap shared by the popup and the viewer */
+  const trapFocus = (layer, event) => {
+    if (event.key !== 'Tab') return;
+    const focusable = $$('button, a[href], [tabindex]:not([tabindex="-1"])', layer).filter((el) => el.offsetParent !== null);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  };
+
+  /* Fullscreen viewer */
+  const viewer = $('#image-viewer');
+  const viewerState = { images: [], index: 0, title: '', returnFocus: null };
+  const showViewerImage = () => {
+    const { images, index, title } = viewerState;
+    $('#iv-img').src = IMG_FULL(images[index]);
+    $('#iv-img').alt = `${title}, image ${index + 1} of ${images.length}`;
+    $('#iv-count').textContent = images.length > 1 ? `${index + 1} / ${images.length}` : '';
+    $('#iv-prev').classList.toggle('hidden', images.length < 2);
+    $('#iv-next').classList.toggle('hidden', images.length < 2);
+  };
+  const openViewer = (images, index, title) => {
+    if (!viewer) return;
+    Object.assign(viewerState, { images, index, title, returnFocus: document.activeElement });
+    showViewerImage();
+    viewer.classList.remove('hidden');
+    viewer.classList.add('flex');
+    $('#iv-close').focus();
+  };
+  const closeViewer = () => {
+    viewer.classList.add('hidden');
+    viewer.classList.remove('flex');
+    if (viewerState.returnFocus) viewerState.returnFocus.focus();
+  };
+  const stepViewer = (delta) => {
+    const n = viewerState.images.length;
+    viewerState.index = (viewerState.index + delta + n) % n;
+    showViewerImage();
+  };
+  if (viewer) {
+    $('#iv-close').addEventListener('click', closeViewer);
+    $('#iv-prev').addEventListener('click', () => stepViewer(-1));
+    $('#iv-next').addEventListener('click', () => stepViewer(1));
+    viewer.addEventListener('click', (event) => { if (event.target === viewer) closeViewer(); });
+  }
+
+  /* Details popup */
+  const modal = $('#project-modal');
+  let modalReturnFocus = null;
+  const openModal = (card) => {
+    if (!modal) return;
+    const title = $('.project-card-title', card).textContent.trim();
+    const images = imagesOf(card);
+    const metaSpans = $$('.project-card-head > span', card);
+    $('#pm-title').textContent = title;
+    $('#pm-meta').textContent = metaSpans.length > 1 ? metaSpans[metaSpans.length - 1].textContent : '';
+
+    const gallery = $('#pm-gallery');
+    gallery.replaceChildren(...images.map((name, i) => {
+      const shot = document.createElement('div');
+      shot.className = 'pm-shot';
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.setAttribute('aria-label', `View image ${i + 1} full screen`);
+      button.innerHTML = FULLSCREEN_ICON;
+      button.addEventListener('click', () => openViewer(images, i, title));
+      shot.append(makeImg(IMG_THUMB(name), `${title}, image ${i + 1} of ${images.length}`, i > 2), button);
+      return shot;
+    }));
+    gallery.scrollLeft = 0;
+
+    const template = $('template.project-details', card);
+    $('#pm-body').replaceChildren(template ? template.content.cloneNode(true) : '');
+
+    modalReturnFocus = document.activeElement;
+    modal.classList.remove('hidden');
+    modal.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+    $('#pm-close').focus();
+  };
+  const closeModal = () => {
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+    if (modalReturnFocus) modalReturnFocus.focus();
+  };
+  if (modal) {
+    $('#pm-close').addEventListener('click', closeModal);
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal || event.target === modal.firstElementChild) closeModal();
     });
+  }
+
+  document.addEventListener('keydown', (event) => {
+    const viewerOpen = viewer && !viewer.classList.contains('hidden');
+    const modalOpen = modal && !modal.classList.contains('hidden');
+    if (viewerOpen) {
+      if (event.key === 'Escape') closeViewer();
+      else if (event.key === 'ArrowLeft' && viewerState.images.length > 1) stepViewer(-1);
+      else if (event.key === 'ArrowRight' && viewerState.images.length > 1) stepViewer(1);
+      else trapFocus(viewer, event);
+    } else if (modalOpen) {
+      if (event.key === 'Escape') closeModal();
+      else trapFocus(modal, event);
+    }
+  });
+
+  /* Cards and carousels */
+  $$('.project-group').forEach((group) => {
+    const viewport = $('.carousel-viewport', group);
+    const track = $('.carousel-track', group);
+    const cards = $$('.project-card', track);
+    const prev = $('.carousel-prev', group);
+    const next = $('.carousel-next', group);
+    const seeAll = $('.see-all-btn', group);
+    const spacer = document.createElement('div');
+    spacer.className = 'carousel-spacer';
+    spacer.setAttribute('aria-hidden', 'true');
+    track.appendChild(spacer);
+
+    cards.forEach((card) => {
+      const title = $('.project-card-title', card).textContent.trim();
+      const images = imagesOf(card).slice(0, 2);
+      if (images.length) {
+        const media = document.createElement('div');
+        media.className = 'project-card-media';
+        images.forEach((name, i) => media.appendChild(makeImg(IMG_THUMB(name), `${title}, preview ${i + 1}`)));
+        card.appendChild(media);
+      }
+      const readMore = document.createElement('button');
+      readMore.type = 'button';
+      readMore.className = 'read-more-btn';
+      readMore.innerHTML = 'Read More <span aria-hidden="true">→</span>';
+      readMore.setAttribute('aria-label', `Read more about ${title}`);
+      readMore.addEventListener('click', () => openModal(card));
+      card.appendChild(readMore);
+    });
+
+    let perView = 2;
+    let step = 0;
+    const gap = () => parseFloat(getComputedStyle(track).columnGap) || 24;
+    const currentIndex = () => (step ? Math.round(track.scrollLeft / step) : 0);
+    const maxIndex = () => Math.max(0, cards.length - perView);
+
+    const update = () => {
+      const expanded = group.classList.contains('is-expanded');
+      const index = Math.min(currentIndex(), maxIndex());
+      cards.forEach((card, i) => {
+        const dim = !expanded && (i < index || i >= index + perView);
+        card.classList.toggle('is-dim', dim);
+        $('.read-more-btn', card).tabIndex = dim ? -1 : 0;
+      });
+      prev.disabled = index <= 0;
+      next.disabled = index >= maxIndex();
+    };
+
+    const layout = () => {
+      if (group.classList.contains('is-expanded')) { viewport.style.marginRight = ''; update(); return; }
+      const width = group.clientWidth;
+      const gutter = Math.max(0, document.documentElement.clientWidth - group.getBoundingClientRect().right);
+      const wide = window.matchMedia('(min-width: 768px)').matches;
+      perView = wide ? 2 : 1;
+      const cardWidth = wide ? (width - gap()) / 2 : width * 0.86;
+      step = cardWidth + gap();
+      track.style.setProperty('--card-w', `${cardWidth}px`);
+      viewport.style.marginRight = `-${gutter}px`;
+      // Spacer lets the last card(s) settle flush with the content edge instead of the screen edge.
+      spacer.style.width = `${Math.max(0, gutter - gap())}px`;
+      update();
+    };
+
+    const goTo = (index) => {
+      track.scrollTo({ left: Math.max(0, Math.min(index, maxIndex())) * step, behavior: 'smooth' });
+    };
+    prev.addEventListener('click', () => goTo(currentIndex() - 1));
+    next.addEventListener('click', () => goTo(currentIndex() + 1));
+
+    // Clicking a dimmed card brings it into view rather than opening it.
+    cards.forEach((card, i) => {
+      card.addEventListener('click', (event) => {
+        if (!card.classList.contains('is-dim')) return;
+        event.preventDefault();
+        event.stopPropagation();
+        goTo(i < currentIndex() ? i : i - perView + 1);
+      }, true);
+    });
+
+    let ticking = false;
+    track.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => { update(); ticking = false; });
+    }, { passive: true });
+    window.addEventListener('resize', layout);
+
+    seeAll.setAttribute('aria-expanded', 'false');
+    seeAll.addEventListener('click', () => {
+      const expanded = group.classList.toggle('is-expanded');
+      seeAll.textContent = expanded ? 'Show less' : 'See All';
+      seeAll.setAttribute('aria-expanded', String(expanded));
+      if (!expanded) {
+        track.scrollLeft = 0;
+        group.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      layout();
+    });
+
+    layout();
   });
   /* ---------- Reveal phone numbers ---------- */
   const phoneButton = $('#reveal-phone');

@@ -42,6 +42,54 @@
       .bullets { @apply mt-4 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-stone-600 marker:text-leaf-500; }
     }
   </style>
+  <style>
+    /* Projects carousel, popup and fullscreen viewer */
+    .see-all-btn { font-size: .875rem; font-weight: 500; color: #553626; border-radius: .375rem; }
+    .see-all-btn:hover { color: #265A40; text-decoration: underline; text-underline-offset: 4px; }
+    .carousel-viewport { margin-top: 1.5rem; overflow: hidden; }
+    .carousel-track { display: flex; gap: 1.5rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding: 2px 0 6px; }
+    .carousel-track::-webkit-scrollbar { display: none; }
+    .carousel-spacer { flex: 0 0 auto; }
+    .project-card { position: relative; flex: 0 0 var(--card-w, 85%); width: var(--card-w, 85%); scroll-snap-align: start; display: flex; flex-direction: column; border: 1px solid #E6CBB1; border-radius: 1rem; background: #fff; padding: 1.5rem; box-shadow: 0 1px 2px rgb(0 0 0 / .05); transition: filter .35s ease, opacity .35s ease, box-shadow .2s ease; }
+    .project-card:hover { box-shadow: 0 6px 18px rgb(63 40 28 / .10); }
+    .project-card.is-dim { filter: grayscale(.35) brightness(.72); opacity: .75; cursor: pointer; }
+    .project-card.is-dim:hover { box-shadow: 0 1px 2px rgb(0 0 0 / .05); }
+    .project-card-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem; font-size: .75rem; color: #78716c; }
+    .project-card-title { margin-top: 1rem; font-family: Fraunces, Georgia, serif; font-size: 1.375rem; line-height: 1.3; font-weight: 500; color: #3F281C; }
+    @media (min-width: 640px) { .project-card-title { font-size: 1.6rem; } }
+    .project-card-line { margin-top: .5rem; font-size: .875rem; color: #57534e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .project-card-media { margin-top: auto; padding-top: 1.5rem; display: flex; align-items: flex-start; gap: 1rem; height: 16.5rem; }
+    @media (min-width: 640px) { .project-card-media { height: 18.5rem; } }
+    .project-card-media img { height: auto; width: auto; max-height: calc(100% - 1.5rem); max-width: calc(50% - .5rem); object-fit: contain; border: 1px solid #e7e5e4; background: #fff; }
+    .project-card-media img:only-child { max-width: 100%; }
+    .read-more-btn { margin-top: 1.25rem; align-self: flex-end; display: inline-flex; align-items: center; gap: .4rem; font-size: .9rem; font-style: italic; color: #3F281C; border-radius: .375rem; }
+    .read-more-btn:hover { color: #265A40; }
+    .read-more-btn:focus-visible, .see-all-btn:focus-visible, .carousel-nav button:focus-visible { outline: 2px solid #2F6F4E; outline-offset: 2px; }
+    .carousel-nav { margin-top: .75rem; display: flex; justify-content: flex-end; gap: .25rem; }
+    .carousel-nav button { height: 2.25rem; width: 2.25rem; border-radius: 9999px; font-size: 1.75rem; line-height: 1; color: #3F281C; }
+    .carousel-nav button:hover:not(:disabled) { background: #F3E6D8; }
+    .carousel-nav button:disabled { color: #d6d3d1; cursor: default; }
+    .project-group.is-expanded .carousel-viewport { margin-right: 0 !important; overflow: visible; }
+    .project-group.is-expanded .carousel-track { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); overflow: visible; }
+    .project-group.is-expanded .project-card { width: auto; filter: none; opacity: 1; cursor: auto; }
+    .project-group.is-expanded .carousel-spacer, .project-group.is-expanded .carousel-nav { display: none; }
+    #pm-gallery { scrollbar-color: rgb(255 255 255 / .35) transparent; }
+    .pm-shot { position: relative; flex: 0 0 auto; height: clamp(240px, 46vh, 460px); }
+    .pm-shot img { height: 100%; width: auto; max-width: 82vw; object-fit: contain; background: #fff; }
+    .pm-shot button, .iv-btn { display: inline-flex; align-items: center; justify-content: center; height: 2.5rem; width: 2.5rem; border-radius: .5rem; background: rgb(255 255 255 / .92); color: #1c1917; box-shadow: 0 1px 4px rgb(0 0 0 / .3); }
+    .pm-shot button { position: absolute; right: .5rem; bottom: .5rem; }
+    .pm-shot button:hover, .iv-btn:hover { background: #fff; }
+    #pm-body .project-desc { color: #fff; font-size: 1.05rem; line-height: 1.7; }
+    @media (min-width: 640px) { #pm-body .project-desc { text-align: justify; } }
+    #project-modal { -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+    #pm-body .project-bullets { margin-top: 1.25rem; list-style: disc; padding-left: 1.5rem; color: #f5f5f4; line-height: 1.7; }
+    #pm-body .project-bullets li + li { margin-top: .6rem; }
+    #pm-body .project-chips { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: .5rem; }
+    #pm-body .project-chips li { border-radius: 9999px; padding: .25rem .75rem; font-size: .75rem; font-weight: 500; color: #fff; background: rgb(255 255 255 / .1); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .2); }
+    .iv-nav { position: absolute; top: 50%; transform: translateY(-50%); height: 3rem; width: 3rem; border-radius: 9999px; font-size: 2.25rem; line-height: 1; color: #fff; background: rgb(255 255 255 / .12); }
+    .iv-nav:hover { background: rgb(255 255 255 / .25); }
+    #image-viewer button:focus-visible, #project-modal button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  </style>
   <script src="script.js" defer></script>
 </head>
 
@@ -186,181 +234,224 @@
       </div>
     </section>
 
-    <!-- 4. Projects -->
-    <section id="projects" class="section bg-bark-50">
+    <!-- 4. Projects
+         Each project is one <article class="project-card">. The card shows the badge, meta line, title,
+         one-line summary and the first two images listed in data-images. Everything inside
+         <template class="project-details"> appears only in the Read More popup.
+         Images: list base names (no extension) from images/; web copies live in images/web/thumb and images/web/full. -->
+    <section id="projects" class="section bg-bark-50 overflow-x-clip">
       <div class="container-x">
         <p class="eyebrow">Projects</p>
         <h2 class="section-title">WHAT I HAVE DONE</h2>
         <p class="section-lead">From household surveys to international exchanges, turning evidence into action.</p>
-     <!-- Research -->
-          <div class="mt-10">
+
+        <!-- Research -->
+        <div class="project-group mt-12" data-group="research">
+          <div class="flex items-end justify-between gap-4">
             <h3 class="text-2xl font-semibold text-bark-900">Research Activities</h3>
-            <div id="research-projects" class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              
-          <article class="card flex flex-col" data-category="research">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="badge badge-leaf">Research</span>
-              <span class="text-xs text-stone-500">ACBES 2023 · Aug 2023</span>
-            </div>
-            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">Impact of Digital Literacy on Vietnamese Households' Clean Energy Consumption</h3>
-            <p class="mt-3 text-sm leading-relaxed text-stone-600">Presented at the 5th Asia Conference on Business and Economics, organized by the Journal of Asian Business and Economics Studies. I led a five-member team through a six-month empirical study.</p>
-            <ul class="bullets">
-              <li>Built binary and ratio-based measures from the Vietnam Household Living Standard Survey (2016 and 2018), covering about 9,300 households in all 63 provinces</li>
-              <li>Logit and panel models found a significant positive association, with clean-energy households showing digital literacy rates 2.5 times higher</li>
-              <li>Heterogeneity analysis showed a stronger urban effect linked to infrastructure gaps, leading to policy recommendations on digital infrastructure and digital literacy in education</li>
-            </ul>
-            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Tools and topics"><li class="chip">Stata</li><li class="chip">Logit</li><li class="chip">Panel data</li><li class="chip">Policy recommendations</li></ul>
-          </article>
+            <button type="button" class="see-all-btn">See All</button>
+          </div>
+          <div class="carousel-viewport">
+            <div class="carousel-track">
 
-          <article class="card flex flex-col" data-category="research">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="badge badge-leaf">Research</span>
-              <span class="text-xs text-stone-500">UEH500 Award</span>
-            </div>
-            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">Climate, Biological and Economics, Health-Induced Shocks, Household Resource Allocation and Poverty Status: A Case of Vietnam</h3>
-            <p class="mt-3 text-sm leading-relaxed text-stone-600">Award-winning paper analyzing how climate, biological, economic and health-induced shocks relate to household resource allocation and poverty status in Vietnam, using Stata.</p>
-            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Tools and topics"><li class="chip">Stata</li><li class="chip">Household poverty</li><li class="chip">Shocks</li><li class="chip">Vietnam</li></ul>
-          </article>
+              <article class="project-card" data-images="p_r_1_1 p_r_1_2">
+                <div class="project-card-head"><span class="badge badge-leaf">Published</span><span>ACBES 2023 · Aug 2023</span></div>
+                <h4 class="project-card-title">Impact of Digital Literacy on Vietnamese Households' Clean Energy Consumption</h4>
+                <p class="project-card-line">Team study of digital literacy and clean energy use.</p>
+                <template class="project-details">
+                  <p class="project-desc">Presented at the 5th Asia Conference on Business and Economics, organized by the Journal of Asian Business and Economics Studies. I led a five-member team through a six-month empirical study.</p>
+                  <ul class="project-bullets">
+                    <li>Built binary and ratio-based measures from the Vietnam Household Living Standard Survey (2016 and 2018), covering about 9,300 households in all 63 provinces</li>
+                    <li>Logit and panel models found a significant positive association, with clean-energy households showing digital literacy rates 2.5 times higher</li>
+                    <li>Heterogeneity analysis showed a stronger urban effect linked to infrastructure gaps, leading to policy recommendations on digital infrastructure and digital literacy in education</li>
+                  </ul>
+                  <ul class="project-chips"><li>Stata</li><li>Logit</li><li>Panel data</li><li>Policy recommendations</li></ul>
+                </template>
+              </article>
 
-          <article class="card flex flex-col project-extra hidden" data-category="research">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <div class="flex gap-2"><span class="badge badge-leaf">Research</span><span class="badge badge-bark">In progress</span></div>
-              <span class="text-xs text-stone-500">AIT master's thesis</span>
-            </div>
-            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">Governance Readiness for Child Online Safety in Thailand's Digital Economy</h3>
-            <p class="mt-3 text-sm leading-relaxed text-stone-600">Examines how adequately Thailand's emerging AI governance framework addresses child online safety, particularly AI-generated abuse material and deepfake-enabled exploitation, and what a diagnostic assessment adapted to the Thai context reveals that a generic application of UNESCO's Readiness Assessment Methodology would not.</p>
-            <ul class="bullets">
-              <li>Policy document analysis of Thai and Vietnamese AI governance instruments against UNESCO RAM dimensions</li>
-              <li>Eight to ten interviews in Bangkok, producing a comparative assessment of strengths, gaps and recommendations</li>
-            </ul>
-            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Tools and topics"><li class="chip">AI governance</li><li class="chip">Child protection</li><li class="chip">UNESCO RAM</li><li class="chip">Qualitative research</li></ul>
-          </article>
-            </div>
-            <button type="button" data-see-more="research" aria-controls="research-projects" onclick="this.previousElementSibling.querySelectorAll('.project-extra').forEach(card => card.classList.remove('hidden')); this.remove();" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-leaf-200 hover:text-white">
-              See more <span aria-hidden="true">→</span>
-            </button>
-            </div>
+              <article class="project-card" data-images="p_r_2_1 p_r_2_2">
+                <div class="project-card-head"><span class="badge badge-leaf">Published</span><span>UEH500 · Jan 2024</span></div>
+                <h4 class="project-card-title">Climate, Biological and Economics, Health-Induced Shocks, Household Resource Allocation and Poverty Status: A Case of Vietnam</h4>
+                <p class="project-card-line">Award-winning study of shocks and household poverty.</p>
+                <template class="project-details">
+                  <p class="project-desc">Award-winning paper at the UEH500 competition, analyzing how climate, biological, economic and health-induced shocks relate to household resource allocation and poverty status in Vietnam, using Stata.</p>
+                  <ul class="project-chips"><li>Stata</li><li>Household poverty</li><li>Shocks</li><li>Vietnam</li></ul>
+                </template>
+              </article>
 
-        <div class="mt-12">
-          <h3 class="text-2xl font-semibold text-bark-900">Leadership &amp; Volunteer Activities</h3>
-          <div id="leadership-projects" class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <!-- Exchange & Volunteering -->
-          <article class="card flex flex-col" data-category="exchange">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="badge badge-bark">Exchange &amp; Volunteering</span>
-              <span class="text-xs text-stone-500">UEH CELG · 2023</span>
-            </div>
-            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">UN SDGs Student Exchange Program: UEH × Tokyo Keizai University (Japan)</h3>
-            <p class="mt-3 text-sm leading-relaxed text-stone-600">Coordinated the Vietnam–Japan Youth Exchange Program 2023, the first iteration of the partnership, handling logistics and facilitation for a program built around the 17 UN Sustainable Development Goals and cultural exchange.</p>
-            <ul class="bullets">
-              <li>Designed and facilitated workshops on climate action, quality education and responsible consumption</li>
-              <li>Across both 2023 pilots: 60+ participants from three countries, delivered on schedule, with roughly 100% participant satisfaction</li>
-              <li>Established the operating model both universities adopted for later cohorts, turning one-off pilots into annual programs</li>
-            </ul>
-            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Skills"><li class="chip">Project management</li><li class="chip">Cross-cultural communication</li><li class="chip">Logistics</li><li class="chip">SDGs</li></ul>
-          </article>
+              <article class="project-card" data-images="p_r_3_1">
+                <div class="project-card-head"><span class="badge badge-stone">In Progress</span><span>AIT master's thesis</span></div>
+                <h4 class="project-card-title">Governance Readiness for Child Online Safety in Thailand's Digital Economy</h4>
+                <p class="project-card-line">Assessing Thailand's AI governance readiness for child online safety.</p>
+                <template class="project-details">
+                  <p class="project-desc">Examines how adequately Thailand's emerging AI governance framework addresses child online safety, particularly AI-generated abuse material and deepfake-enabled exploitation, and what a diagnostic assessment adapted to the Thai context reveals that a generic application of UNESCO's Readiness Assessment Methodology would not.</p>
+                  <ul class="project-bullets">
+                    <li>Policy document analysis of Thai and Vietnamese AI governance instruments against UNESCO RAM dimensions</li>
+                    <li>Eight to ten interviews in Bangkok, producing a comparative assessment of strengths, gaps and recommendations</li>
+                  </ul>
+                  <ul class="project-chips"><li>AI governance</li><li>Child protection</li><li>UNESCO RAM</li><li>Qualitative research</li></ul>
+                </template>
+              </article>
 
-          <article class="card flex flex-col" data-category="exchange">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="badge badge-bark">Exchange &amp; Volunteering</span>
-              <span class="text-xs text-stone-500">UEH CELG · 2023</span>
             </div>
-            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">UN SDGs Student Exchange Program: UEH × Queensland University of Technology (Australia)</h3>
-            <p class="mt-3 text-sm leading-relaxed text-stone-600">Coordinated the QUT–UEH Exchange Program 2023, the first iteration of the partnership, handling logistics and facilitation for a program built around the 17 UN Sustainable Development Goals and cultural exchange.</p>
-            <ul class="bullets">
-              <li>Designed and facilitated workshops on climate action, quality education and responsible consumption</li>
-              <li>Across both 2023 pilots: 60+ participants from three countries, delivered on schedule, with roughly 100% participant satisfaction</li>
-              <li>Established the operating model both universities adopted for later cohorts, turning one-off pilots into annual programs</li>
-            </ul>
-            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Skills"><li class="chip">Project management</li><li class="chip">Cross-cultural communication</li><li class="chip">Logistics</li><li class="chip">SDGs</li></ul>
-          </article>
+          </div>
+          <div class="carousel-nav"><button type="button" class="carousel-prev" aria-label="Previous research projects">‹</button><button type="button" class="carousel-next" aria-label="Next research projects">›</button></div>
+        </div>
 
-          <article class="card flex flex-col project-extra hidden" data-category="exchange">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="badge badge-bark">Exchange &amp; Volunteering</span>
-              <span class="text-xs text-stone-500">UEH CELG</span>
-            </div>
-            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">UEH × Osaka Sangyo University (Japan) Student Exchange</h3>
-            <p class="mt-3 text-sm leading-relaxed text-stone-600">Joined a similar exchange as a companion to visiting students from Osaka Sangyo University, taking part in the cultural exchange from the participant side.</p>
-            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Skills"><li class="chip">Cultural exchange</li><li class="chip">Cross-cultural communication</li></ul>
-          </article>
+        <!-- Leadership & Volunteer -->
+        <div class="project-group mt-12" data-group="leadership">
+          <div class="flex items-end justify-between gap-4">
+            <h3 class="text-2xl font-semibold text-bark-900">Leadership &amp; Volunteer Activities</h3>
+            <button type="button" class="see-all-btn">See All</button>
+          </div>
+          <div class="carousel-viewport">
+            <div class="carousel-track">
 
-          <article class="card flex flex-col project-extra hidden" data-category="exchange">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="badge badge-bark">Exchange &amp; Volunteering</span>
-              <span class="text-xs text-stone-500">UEH student club</span>
-            </div>
-            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">Extended BELL Club: Bi-weekly English Speaking Group</h3>
-            <p class="mt-3 text-sm leading-relaxed text-stone-600">Ran a bi-weekly program at UEH that encouraged students to practice speaking English with one another.</p>
-            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Skills"><li class="chip">Community building</li><li class="chip">English language</li><li class="chip">Student engagement</li></ul>
-          </article>
-            </div>
-            <button type="button" data-see-more="leadership" aria-controls="leadership-projects" onclick="this.previousElementSibling.querySelectorAll('.project-extra').forEach(card => card.classList.remove('hidden')); this.remove();" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-leaf-200 hover:text-white">
-              See more <span aria-hidden="true">→</span>
-            </button>
-            </div>
-      
-        <div class="mt-12">
-          <h3 class="text-2xl font-semibold text-bark-900">Academic Activities</h3>
-          <div id="academic-projects" class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <!-- Investment & Analytics -->
-          <article class="card flex flex-col" data-category="analytics">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="badge badge-stone">Investment &amp; Analytics</span>
-              <span class="text-xs text-stone-500">Principles of Valuation · 2023</span>
-            </div>
-            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">Vietnam Real Estate Market Report: National, Ho Chi Minh City and Industrial Property</h3>
-            <p class="mt-3 text-sm leading-relaxed text-stone-600">Course report analyzing Vietnam's real estate market from the national picture to Ho Chi Minh City, with a segment study of industrial property covering rents, occupancy and FDI.</p>
-            <ul class="bullets">
-              <li>Compared industrial park land rents of USD 140 to 300 per m² in Ho Chi Minh City, at 95% occupancy, with USD 100 to 250 in neighboring Binh Duong</li>
-              <li>Concluded that land scarcity is pushing new supply outward and toward multi-story factories</li>
-            </ul>
-            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Tools and topics"><li class="chip">Market analysis</li><li class="chip">Real estate</li><li class="chip">Industrial property</li></ul>
-          </article>
+              <article class="project-card" data-images="p_l_1_1 p_l_1_2 p_l_1_3 p_l_1_4 p_l_1_5 p_l_1_6 p_l_1_7 p_l_1_8">
+                <div class="project-card-head"><span class="badge badge-bark">Leadership</span><span>UEH CELG · Aug 2023</span></div>
+                <h4 class="project-card-title">UN SDGs Student Exchange Program: UEH × Tokyo Keizai University (Japan)</h4>
+                <p class="project-card-line">Coordinated the first Vietnam and Japan SDGs youth exchange.</p>
+                <template class="project-details">
+                  <p class="project-desc">Coordinated the Vietnam–Japan Youth Exchange Program 2023, the first iteration of the partnership, handling logistics and facilitation for a program built around the 17 UN Sustainable Development Goals and cultural exchange.</p>
+                  <ul class="project-bullets">
+                    <li>Designed and facilitated workshops on climate action, quality education and responsible consumption</li>
+                    <li>Across both 2023 pilots: 60+ participants from three countries, delivered on schedule, with roughly 100% participant satisfaction</li>
+                    <li>Established the operating model both universities adopted for later cohorts, turning one-off pilots into annual programs</li>
+                  </ul>
+                  <ul class="project-chips"><li>Project management</li><li>Cross-cultural communication</li><li>Logistics</li><li>SDGs</li></ul>
+                </template>
+              </article>
 
-          <article class="card flex flex-col" data-category="analytics">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="badge badge-stone">Investment &amp; Analytics</span>
-              <span class="text-xs text-stone-500">Team of five · Apr 2023</span>
-            </div>
-            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">Optimal Stock Portfolio: Simulation, Optimization and Backtest</h3>
-            <p class="mt-3 text-sm leading-relaxed text-stone-600">Built and tested a stock and treasury bill portfolio for a VND 500 million capital base, starting from macro, industry and company analysis of six listed Vietnamese firms.</p>
-            <ul class="bullets">
-              <li>Simulated 20,000 weight combinations in Excel and used Solver to find the minimum variance and Sharpe-maximizing portfolios</li>
-              <li>Allocated 83.68% to five stocks and 16.32% to treasury bills against a 20% annual return target</li>
-              <li>A one-year in-sample backtest returned 20.06% (VND 100.3 million) while the VN-Index fell about 31%</li>
-            </ul>
-            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Tools and topics"><li class="chip">Excel</li><li class="chip">Solver</li><li class="chip">Portfolio optimization</li><li class="chip">Sharpe ratio</li></ul>
-          </article>
+              <article class="project-card" data-images="p_l_2_1 p_l_2_2 p_l_2_3 p_l_2_4 p_l_2_5 p_l_2_6">
+                <div class="project-card-head"><span class="badge badge-bark">Leadership</span><span>UEH CELG · Oct 2023</span></div>
+                <h4 class="project-card-title">UN SDGs Student Exchange Program: UEH × Queensland University of Technology (Australia)</h4>
+                <p class="project-card-line">Coordinated the first QUT and UEH exchange built around the 17 SDGs.</p>
+                <template class="project-details">
+                  <p class="project-desc">Coordinated the QUT–UEH Exchange Program 2023, the first iteration of the partnership, handling logistics and facilitation for a program built around the 17 UN Sustainable Development Goals and cultural exchange.</p>
+                  <ul class="project-bullets">
+                    <li>Designed and facilitated workshops on climate action, quality education and responsible consumption</li>
+                    <li>Across both 2023 pilots: 60+ participants from three countries, delivered on schedule, with roughly 100% participant satisfaction</li>
+                    <li>Established the operating model both universities adopted for later cohorts, turning one-off pilots into annual programs</li>
+                  </ul>
+                  <ul class="project-chips"><li>Project management</li><li>Cross-cultural communication</li><li>Logistics</li><li>SDGs</li></ul>
+                </template>
+              </article>
 
-          <article class="card flex flex-col project-extra hidden" data-category="analytics">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="badge badge-stone">Investment &amp; Analytics</span>
-              <span class="text-xs text-stone-500">Graduate course project</span>
-            </div>
-            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">ESG Scores and Financial Performance: Do Companies with Higher ESG Scores Perform Better Financially?</h3>
-            <p class="mt-3 text-sm leading-relaxed text-stone-600">Final project for the course "From Data to Decisions: Mastering Data Mining, Analysis and Predictive Analytics in Business," examining the link between ESG scores and financial performance with Tableau.</p>
-            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Tools and topics"><li class="chip">Tableau</li><li class="chip">ESG</li><li class="chip">Financial performance</li></ul>
-          </article>
+              <article class="project-card" data-images="p_l_3_1">
+                <div class="project-card-head"><span class="badge badge-stone">Participant</span><span>UEH · Oct 2023</span></div>
+                <h4 class="project-card-title">UEH × Osaka Sangyo University (Japan) Student Exchange</h4>
+                <p class="project-card-line">Joined visiting Osaka Sangyo University students as a companion.</p>
+                <template class="project-details">
+                  <p class="project-desc">Joined the Vietnam Study Program 2023 (26 October to 8 November) as a companion to visiting students from Osaka Sangyo University, taking part in the cultural exchange from the participant side.</p>
+                  <ul class="project-chips"><li>Cultural exchange</li><li>Cross-cultural communication</li></ul>
+                </template>
+              </article>
 
-          <article class="card flex flex-col project-extra hidden" data-category="analytics">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="badge badge-stone">Investment &amp; Analytics</span>
-              <span class="text-xs text-stone-500">Data Analytics Essentials</span>
+              <article class="project-card" data-images="p_l_4_1 p_l_4_2 p_l_4_3">
+                <div class="project-card-head"><span class="badge badge-bark">Leadership</span><span>UEH student club</span></div>
+                <h4 class="project-card-title">Extended BELL Club: Bi-weekly English Speaking Group</h4>
+                <p class="project-card-line">Ran a bi-weekly English speaking group for UEH students.</p>
+                <template class="project-details">
+                  <p class="project-desc">Ran a bi-weekly program at UEH that encouraged students to practice speaking English with one another.</p>
+                  <ul class="project-chips"><li>Community building</li><li>English language</li><li>Student engagement</li></ul>
+                </template>
+              </article>
+
             </div>
-            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">Business Intelligence Dashboards in Power BI</h3>
-            <p class="mt-3 text-sm leading-relaxed text-stone-600">Course project building interactive business dashboards in Power BI as part of a data analytics essentials course.</p>
-            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Tools and topics"><li class="chip">Power BI</li><li class="chip">Dashboards</li><li class="chip">Business intelligence</li></ul>
-          </article>
+          </div>
+          <div class="carousel-nav"><button type="button" class="carousel-prev" aria-label="Previous leadership projects">‹</button><button type="button" class="carousel-next" aria-label="Next leadership projects">›</button></div>
+        </div>
+
+        <!-- Academic -->
+        <div class="project-group mt-12" data-group="academic">
+          <div class="flex items-end justify-between gap-4">
+            <h3 class="text-2xl font-semibold text-bark-900">Academic Activities</h3>
+            <button type="button" class="see-all-btn">See All</button>
+          </div>
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+
+              <article class="project-card" data-images="p_a_1_1 p_a_1_2 p_a_1_3 p_a_1_4 p_a_1_5 p_a_1_6">
+                <div class="project-card-head"><span class="badge badge-stone">Course Report</span><span>Principles of Valuation · 2023</span></div>
+                <h4 class="project-card-title">Vietnam Real Estate Market Report: National, Ho Chi Minh City and Industrial Property</h4>
+                <p class="project-card-line">Vietnam's property market, from national trends to industrial parks.</p>
+                <template class="project-details">
+                  <p class="project-desc">Course report analyzing Vietnam's real estate market from the national picture to Ho Chi Minh City, with a segment study of industrial property covering rents, occupancy and FDI.</p>
+                  <ul class="project-bullets">
+                    <li>Compared industrial park land rents of USD 140 to 300 per m² in Ho Chi Minh City, at 95% occupancy, with USD 100 to 250 in neighboring Binh Duong</li>
+                    <li>Concluded that land scarcity is pushing new supply outward and toward multi-story factories</li>
+                  </ul>
+                  <ul class="project-chips"><li>Market analysis</li><li>Real estate</li><li>Industrial property</li></ul>
+                </template>
+              </article>
+
+              <article class="project-card" data-images="p_a_2_1 p_a_2_2 p_a_2_3 p_a_2_4">
+                <div class="project-card-head"><span class="badge badge-stone">Course Report</span><span>Team of five · Apr 2023</span></div>
+                <h4 class="project-card-title">Optimal Stock Portfolio: Simulation, Optimization and Backtest</h4>
+                <p class="project-card-line">Built and backtested a VND 500 million stock and T-bill portfolio.</p>
+                <template class="project-details">
+                  <p class="project-desc">Built and tested a stock and treasury bill portfolio for a VND 500 million capital base, starting from macro, industry and company analysis of six listed Vietnamese firms.</p>
+                  <ul class="project-bullets">
+                    <li>Simulated 20,000 weight combinations in Excel and used Solver to find the minimum variance and Sharpe-maximizing portfolios</li>
+                    <li>Allocated 83.68% to five stocks and 16.32% to treasury bills against a 20% annual return target</li>
+                    <li>A one-year in-sample backtest returned 20.06% (VND 100.3 million) while the VN-Index fell about 31%</li>
+                  </ul>
+                  <ul class="project-chips"><li>Excel</li><li>Solver</li><li>Portfolio optimization</li><li>Sharpe ratio</li></ul>
+                </template>
+              </article>
+
+              <article class="project-card" data-images="p_a_3_1 p_a_3_2 p_a_3_3 p_a_3_4 p_a_3_5 p_a_3_6">
+                <div class="project-card-head"><span class="badge badge-leaf">Data Analysis</span><span>Graduate course project</span></div>
+                <h4 class="project-card-title">ESG Scores and Financial Performance: Do Companies with Higher ESG Scores Perform Better Financially?</h4>
+                <p class="project-card-line">Testing in Tableau whether higher ESG means better returns.</p>
+                <template class="project-details">
+                  <p class="project-desc">Final project for the course "From Data to Decisions: Mastering Data Mining, Analysis and Predictive Analytics in Business," examining the link between ESG scores and financial performance with Tableau.</p>
+                  <ul class="project-chips"><li>Tableau</li><li>ESG</li><li>Financial performance</li></ul>
+                </template>
+              </article>
+
+              <article class="project-card" data-images="p_a_4_1">
+                <div class="project-card-head"><span class="badge badge-leaf">Data Analysis</span><span>Data Analytics Essentials</span></div>
+                <h4 class="project-card-title">Business Intelligence Dashboards in Power BI</h4>
+                <p class="project-card-line">Interactive Power BI dashboards built for a data analytics course.</p>
+                <template class="project-details">
+                  <p class="project-desc">Course project building interactive business dashboards in Power BI as part of a data analytics essentials course.</p>
+                  <ul class="project-chips"><li>Power BI</li><li>Dashboards</li><li>Business intelligence</li></ul>
+                </template>
+              </article>
+
             </div>
-            <button type="button" data-see-more="academic" aria-controls="academic-projects" onclick="this.previousElementSibling.querySelectorAll('.project-extra').forEach(card => card.classList.remove('hidden')); this.remove();" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-leaf-200 hover:text-white">
-              See more <span aria-hidden="true">→</span>
-            </button>
-            </div>
-      </div>
+          </div>
+          <div class="carousel-nav"><button type="button" class="carousel-prev" aria-label="Previous academic projects">‹</button><button type="button" class="carousel-next" aria-label="Next academic projects">›</button></div>
         </div>
       </div>
     </section>
+
+    <!-- Project details popup (filled by script.js) -->
+    <div id="project-modal" class="fixed inset-0 z-[70] hidden overflow-y-auto bg-stone-900/95" role="dialog" aria-modal="true" aria-labelledby="pm-title">
+      <div class="mx-auto w-full max-w-5xl px-5 pb-16 pt-6 sm:px-8 sm:pt-10">
+        <div class="flex justify-end"><button type="button" id="pm-close" class="text-sm font-medium text-white underline underline-offset-4 hover:text-bark-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white">Close</button></div>
+        <div id="pm-gallery" class="mt-4 flex gap-4 overflow-x-auto pb-3"></div>
+        <div class="mt-8 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
+          <h3 id="pm-title" class="font-serif text-2xl font-semibold leading-snug text-white sm:text-3xl"></h3>
+          <p id="pm-meta" class="shrink-0 text-sm text-stone-300 sm:pt-2"></p>
+        </div>
+        <div id="pm-body" class="mt-6"></div>
+      </div>
+    </div>
+
+    <!-- Fullscreen image viewer -->
+    <div id="image-viewer" class="fixed inset-0 z-[80] hidden items-center justify-center bg-black/95" role="dialog" aria-modal="true" aria-label="Image viewer">
+      <figure class="relative">
+        <img id="iv-img" src="" alt="" class="max-h-[88vh] max-w-[92vw] bg-white object-contain">
+        <button type="button" id="iv-close" class="iv-btn absolute right-2 top-2" aria-label="Exit full screen">
+          <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M9 3v6H3M15 3v6h6M9 21v-6H3M15 21v-6h6"/></svg>
+        </button>
+        <figcaption id="iv-count" class="mt-3 text-center text-sm text-stone-300"></figcaption>
+      </figure>
+      <button type="button" id="iv-prev" class="iv-nav left-2 sm:left-6" aria-label="Previous image">‹</button>
+      <button type="button" id="iv-next" class="iv-nav right-2 sm:right-6" aria-label="Next image">›</button>
+    </div>
 
     <!-- 5. Experience & Education timeline -->
     <section id="experience" class="section">
