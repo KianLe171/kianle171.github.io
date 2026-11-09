@@ -282,7 +282,18 @@
       ticking = true;
       requestAnimationFrame(() => { update(); ticking = false; });
     }, { passive: true });
+    // Re-measure whenever the row's width changes, including when Tailwind's CDN
+    // finishes styling the page after this script has already run.
+    if ('ResizeObserver' in window) {
+      let lastWidth = 0;
+      new ResizeObserver(() => {
+        if (group.clientWidth === lastWidth) return;
+        lastWidth = group.clientWidth;
+        layout();
+      }).observe(group);
+    }
     window.addEventListener('resize', layout);
+    window.addEventListener('load', layout);
 
     seeAll.setAttribute('aria-expanded', 'false');
     seeAll.addEventListener('click', () => {
