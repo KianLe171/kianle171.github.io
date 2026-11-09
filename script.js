@@ -74,7 +74,23 @@
       });
     });
   }
+  /* ---------- Expand project groups ---------- */
+  $$('[data-see-more]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const group = button.dataset.seeMore;
+      const groupCards = {
+        research: '#research-projects',
+        leadership: '#leadership-projects',
+        academic: '#academic-projects'
+      };
+      const grid = $(groupCards[group]);
 
+      if (!grid) return;
+
+      $$('.project-extra', grid).forEach((card) => card.classList.remove('hidden'));
+      button.remove();
+    });
+  });
   /* ---------- Reveal phone numbers ---------- */
   const phoneButton = $('#reveal-phone');
   const phoneList = $('#phone-list');
