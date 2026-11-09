@@ -84,6 +84,13 @@
     #project-modal { -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
     #pm-body .project-bullets { margin-top: 1.25rem; list-style: disc; padding-left: 1.5rem; color: #f5f5f4; line-height: 1.7; }
     #pm-body .project-bullets li + li { margin-top: .6rem; }
+    #pm-body .project-h { margin-top: 2rem; font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: .75rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #B9D7C1; }
+    #pm-body .project-h + .project-bullets, #pm-body .project-h + .project-desc, #pm-body .project-h + .project-stats { margin-top: .75rem; }
+    #pm-body .project-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .75rem; }
+    #pm-body .project-stats + .project-bullets { margin-top: 1rem; }
+    #pm-body .project-stats div { border-radius: .75rem; background: rgb(255 255 255 / .07); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .14); padding: .9rem 1rem; }
+    #pm-body .project-stats b { display: block; font-family: Fraunces, Georgia, serif; font-size: 1.6rem; font-weight: 500; line-height: 1.15; color: #fff; }
+    #pm-body .project-stats span { display: block; margin-top: .3rem; font-size: .8rem; line-height: 1.4; color: #d6d3d1; }
     #pm-body .project-chips { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: .5rem; }
     #pm-body .project-chips li { border-radius: 9999px; padding: .25rem .75rem; font-size: .75rem; font-weight: 500; color: #fff; background: rgb(255 255 255 / .1); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .2); }
     .iv-nav { position: absolute; top: 50%; transform: translateY(-50%); height: 3rem; width: 3rem; border-radius: 9999px; font-size: 2.25rem; line-height: 1; color: #fff; background: rgb(255 255 255 / .12); }
@@ -260,13 +267,15 @@
                 <h4 class="project-card-title">Impact of Digital Literacy on Vietnamese Households' Clean Energy Consumption</h4>
                 <p class="project-card-line">Team study of digital literacy and clean energy use.</p>
                 <template class="project-details">
-                  <p class="project-desc">Presented at the 5th Asia Conference on Business and Economics, organized by the Journal of Asian Business and Economics Studies. I led a five-member team through a six-month empirical study.</p>
-                  <ul class="project-bullets">
-                    <li>Built binary and ratio-based measures from the Vietnam Household Living Standard Survey (2016 and 2018), covering about 9,300 households in all 63 provinces</li>
-                    <li>Logit and panel models found a significant positive association, with clean-energy households showing digital literacy rates 2.5 times higher</li>
-                    <li>Heterogeneity analysis showed a stronger urban effect linked to infrastructure gaps, leading to policy recommendations on digital infrastructure and digital literacy in education</li>
-                  </ul>
-                  <ul class="project-chips"><li>Stata</li><li>Logit</li><li>Panel data</li><li>Policy recommendations</li></ul>
+                  <p class="project-desc">Internet access in Vietnam has spread quickly, yet there was little household level evidence on whether being digitally literate changes the way families use energy. As lead author of a five-member team, I steered a six-month empirical study to measure that link, and the paper was selected from hundreds of submissions for presentation at ACBES 2023, the 5th Asia Conference on Business and Economic Studies hosted by UEH and the Journal of Asian Business and Economic Studies.</p>
+                  <h5 class="project-h">What I did</h5>
+                  <ul class="project-bullets"><li>Led the team from research design to the final paper, setting the timeline and dividing the literature, data and writing work</li><li>Built binary and ratio-based measures of digital literacy and clean energy use from the Vietnam Household Living Standard Survey (VHLSS) 2016 and 2018</li><li>Estimated logit and panel models in Stata, then ran heterogeneity analysis across urban and rural households and across income groups</li></ul>
+                  <h5 class="project-h">Result</h5>
+                  <div class="project-stats"><div><b>9,300</b><span>households analyzed</span></div><div><b>63</b><span>provinces covered</span></div><div><b>2.5×</b><span>higher digital literacy in clean energy households</span></div></div>
+                  <ul class="project-bullets"><li>Digital literacy was significantly and positively associated with clean energy use, and the effect held in both high and low income groups</li><li>The effect was stronger in cities than in rural areas, which pointed to gaps in rural digital infrastructure and clean energy supply</li><li>Presented at ACBES 2023 (16 to 18 August 2023), with policy recommendations on digital infrastructure and on teaching digital literacy at every level of formal education</li></ul>
+                  <h5 class="project-h">What I gained</h5>
+                  <p class="project-desc">Leading peers through a long empirical project taught me how to turn a broad question into a model that can actually be tested, and how to keep a team aligned when every member owns a different piece of the paper. Presenting to an international academic audience for the first time also made me far more careful about separating what the data shows from what I would like it to show, which is the habit I now bring to any policy recommendation.</p>
+                  <ul class="project-chips"><li>Stata</li><li>Logit</li><li>Panel data</li><li>VHLSS</li><li>Team leadership</li><li>Policy recommendations</li></ul>
                 </template>
               </article>
 
@@ -275,8 +284,15 @@
                 <h4 class="project-card-title">Climate, Biological and Economics, Health-Induced Shocks, Household Resource Allocation and Poverty Status: A Case of Vietnam</h4>
                 <p class="project-card-line">Award-winning study of shocks and household poverty.</p>
                 <template class="project-details">
-                  <p class="project-desc">Award-winning paper at the UEH500 competition, analyzing how climate, biological, economic and health-induced shocks relate to household resource allocation and poverty status in Vietnam, using Stata.</p>
-                  <ul class="project-chips"><li>Stata</li><li>Household poverty</li><li>Shocks</li><li>Vietnam</li></ul>
+                  <p class="project-desc">Vietnam is one of the most hazard-prone countries in the Pacific region, yet most evidence on climate shocks and poverty comes from macro level data that hides what happens inside households. For the Data Analytics &amp; Forecast course, I led a four-member team as lead author to test whether climate, biological, economic and health shocks push farm households into poverty, and through which channels that happens.</p>
+                  <h5 class="project-h">What I did</h5>
+                  <ul class="project-bullets"><li>Coordinated the team and the research design, from the literature review through to the policy implications</li><li>Cleaned a 2014 to 2016 panel from the Vietnam Access to Resources Household Survey (VARHS), keeping 5,122 shock-affected households across 12 provinces</li><li>Estimated logit benchmark models with household head, household and commune controls, followed by a mediation model on productive investment and precautionary savings and a heterogeneity analysis by income</li></ul>
+                  <h5 class="project-h">Result</h5>
+                  <div class="project-stats"><div><b>5,122</b><span>households analyzed</span></div><div><b>63%</b><span>of affected households had any coping strategy</span></div><div><b>48.7%</b><span>of households hit in Dak Lak, the worst province in 2016</span></div></div>
+                  <ul class="project-bullets"><li>Climate shocks significantly increased the likelihood of perceived poverty, with a logit coefficient of 0.598 on its own and 0.366 once all controls were added, and biological shocks showed the same effect</li><li>Female-headed households were markedly more vulnerable (coefficient 0.620), and the shocks worked partly by cutting productive investment and precautionary savings</li><li>Won the Excellent Course Research Award UEH500 2023 (topic KT60), conferred by the UEH Youth Union on 15 January 2024</li></ul>
+                  <h5 class="project-h">What I gained</h5>
+                  <p class="project-desc">This project moved me from describing poverty to explaining how it happens, and the mediation analysis showed me that the most useful policy insight often sits in the indirect channel rather than in the headline coefficient. Leading the team under a course deadline also taught me to cut scope wherever it did not serve the core question, so that the analysis we did finish was rigorous enough to win recognition.</p>
+                  <ul class="project-chips"><li>Stata</li><li>Logit</li><li>Mediation analysis</li><li>VARHS</li><li>Household poverty</li><li>Climate shocks</li></ul>
                 </template>
               </article>
 
@@ -285,12 +301,15 @@
                 <h4 class="project-card-title">Governance Readiness for Child Online Safety in Thailand's Digital Economy</h4>
                 <p class="project-card-line">Assessing Thailand's AI governance readiness for child online safety.</p>
                 <template class="project-details">
-                  <p class="project-desc">Examines how adequately Thailand's emerging AI governance framework addresses child online safety, particularly AI-generated abuse material and deepfake-enabled exploitation, and what a diagnostic assessment adapted to the Thai context reveals that a generic application of UNESCO's Readiness Assessment Methodology would not.</p>
-                  <ul class="project-bullets">
-                    <li>Policy document analysis of Thai and Vietnamese AI governance instruments against UNESCO RAM dimensions</li>
-                    <li>Eight to ten interviews in Bangkok, producing a comparative assessment of strengths, gaps and recommendations</li>
-                  </ul>
-                  <ul class="project-chips"><li>AI governance</li><li>Child protection</li><li>UNESCO RAM</li><li>Qualitative research</li></ul>
+                  <p class="project-desc">Generative AI has made abuse material and deepfake exploitation far easier to produce, while Thailand's AI governance framework is still taking shape. My AIT master's thesis asks how ready that framework is to protect children online, and what a diagnostic assessment adapted to the Thai context reveals that a generic application of UNESCO's Readiness Assessment Methodology (RAM) would not.</p>
+                  <h5 class="project-h">What I did</h5>
+                  <ul class="project-bullets"><li>Narrowed the topic from several candidates to a localized AI readiness assessment for Thailand, with Vietnam as a comparison case</li><li>Mapping Thai and Vietnamese AI governance instruments against the UNESCO RAM dimensions as the basis of the proposal</li><li>Designing eight to ten semi-structured interviews with stakeholders in Bangkok to test the document findings against practice</li></ul>
+                  <h5 class="project-h">Result</h5>
+                  <div class="project-stats"><div><b>Proposal</b><span>current stage</span></div><div><b>2</b><span>countries compared</span></div><div><b>8 to 10</b><span>planned interviews</span></div></div>
+                  <ul class="project-bullets"><li>The proposal is being drafted now, so there are no findings yet</li><li>The expected output is a comparative assessment of strengths, gaps and recommendations for child online safety within Thailand's AI governance</li></ul>
+                  <h5 class="project-h">What I gained</h5>
+                  <p class="project-desc">Moving from quantitative economics into qualitative policy research has been the steepest learning curve of my graduate study so far, and it has taught me that a global framework is only as useful as its fit with local institutions. The thesis also connects my analytics training directly to the issue I care about most, which is keeping children safe in digital spaces.</p>
+                  <ul class="project-chips"><li>AI governance</li><li>Child protection</li><li>UNESCO RAM</li><li>Qualitative research</li><li>Policy analysis</li></ul>
                 </template>
               </article>
 
@@ -313,28 +332,32 @@
                 <h4 class="project-card-title">UN SDGs Student Exchange Program: UEH × Tokyo Keizai University (Japan)</h4>
                 <p class="project-card-line">Coordinated the first Vietnam and Japan SDGs youth exchange.</p>
                 <template class="project-details">
-                  <p class="project-desc">Coordinated the Vietnam–Japan Youth Exchange Program 2023, the first iteration of the partnership, handling logistics and facilitation for a program built around the 17 UN Sustainable Development Goals and cultural exchange.</p>
-                  <ul class="project-bullets">
-                    <li>Designed and facilitated workshops on climate action, quality education and responsible consumption</li>
-                    <li>Across both 2023 pilots: 60+ participants from three countries, delivered on schedule, with roughly 100% participant satisfaction</li>
-                    <li>Established the operating model both universities adopted for later cohorts, turning one-off pilots into annual programs</li>
-                  </ul>
-                  <ul class="project-chips"><li>Project management</li><li>Cross-cultural communication</li><li>Logistics</li><li>SDGs</li></ul>
+                  <p class="project-desc">In August 2023, the year Vietnam and Japan marked 50 years of diplomatic relations, UEH's College of Economics, Law and Government (CELG) hosted students from Tokyo Keizai University for a 14-day program built around the 17 UN Sustainable Development Goals and cultural exchange. The program was run by students under CELG's guidance, and I was one of the organizers responsible for logistics and engagement.</p>
+                  <h5 class="project-h">What I did</h5>
+                  <ul class="project-bullets"><li>Coordinated logistics across two campuses, UEH Campus B in Ho Chi Minh City and UEH Vinh Long, from the welcome ceremony to the farewell</li><li>Designed and facilitated workshops on climate action, quality education and responsible consumption, alongside an academic day on gender inequality and the Vietnam and Japan International Student Summit, where mixed teams presented on the 17 SDGs</li><li>Supported the cultural program, including language exchange sessions, an ao dai and origami cultural day, and a field trip to the Cu Chi Tunnels</li></ul>
+                  <h5 class="project-h">Result</h5>
+                  <div class="project-stats"><div><b>14</b><span>days</span></div><div><b>60+</b><span>participants across the TKU and QUT programs</span></div><div><b>~100%</b><span>participant satisfaction</span></div></div>
+                  <ul class="project-bullets"><li>Delivered on schedule with roughly 100% participant satisfaction</li><li>Helped establish the operating model both universities adopted for later cohorts, turning a one-off pilot into an annual program</li><li>At the closing ceremony, a TKU student with a visual impairment said UEH students had helped him overcome his fear of going abroad and take part in most activities</li></ul>
+                  <h5 class="project-h">What I gained</h5>
+                  <p class="project-desc">Organizing for guests with different languages, expectations and needs taught me that inclusion has to be planned rather than improvised, and that small adjustments to pace and support decide whether everyone can really take part. It was also my first time coordinating a student team across two campuses, which is the closest I had come to running a real program from start to finish.</p>
+                  <ul class="project-chips"><li>Project management</li><li>Cross-cultural communication</li><li>Logistics</li><li>Workshop facilitation</li><li>SDGs</li></ul>
                 </template>
               </article>
 
               <article class="project-card" data-images="p_l_2_1 p_l_2_2 p_l_2_3 p_l_2_4 p_l_2_5 p_l_2_6">
                 <div class="project-card-head"><span class="badge badge-bark">Leadership</span><span>UEH CELG · Oct 2023</span></div>
                 <h4 class="project-card-title">UN SDGs Student Exchange Program: UEH × Queensland University of Technology (Australia)</h4>
-                <p class="project-card-line">Coordinated the first QUT and UEH exchange built around the 17 SDGs.</p>
+                <p class="project-card-line">Coordinated a seven-day QUT study tour across three cities.</p>
                 <template class="project-details">
-                  <p class="project-desc">Coordinated the QUT–UEH Exchange Program 2023, the first iteration of the partnership, handling logistics and facilitation for a program built around the 17 UN Sustainable Development Goals and cultural exchange.</p>
-                  <ul class="project-bullets">
-                    <li>Designed and facilitated workshops on climate action, quality education and responsible consumption</li>
-                    <li>Across both 2023 pilots: 60+ participants from three countries, delivered on schedule, with roughly 100% participant satisfaction</li>
-                    <li>Established the operating model both universities adopted for later cohorts, turning one-off pilots into annual programs</li>
-                  </ul>
-                  <ul class="project-chips"><li>Project management</li><li>Cross-cultural communication</li><li>Logistics</li><li>SDGs</li></ul>
+                  <p class="project-desc">UEH CELG and its Vinh Long Campus hosted a seven-day study tour for students from Queensland University of Technology (QUT), designed both as a course for the Australian students and as practical learning in Vietnam. I was one of the organizers responsible for logistics and engagement.</p>
+                  <h5 class="project-h">What I did</h5>
+                  <ul class="project-bullets"><li>Coordinated an itinerary across Ho Chi Minh City, Vinh Long and Can Tho, from Independence Palace and the War Remnants Museum to An Binh islet and the Cai Rang floating market</li><li>Supported the UEH and QUT Professional Workshop on the business of sustainability and the circular economy in Vietnam, which featured three expert presentations</li><li>Designed and facilitated workshops on climate action, quality education and responsible consumption, together with cultural exchanges at UEH Vinh Long Campus</li></ul>
+                  <h5 class="project-h">Result</h5>
+                  <div class="project-stats"><div><b>7</b><span>days</span></div><div><b>3</b><span>cities</span></div><div><b>60+</b><span>participants across the TKU and QUT programs</span></div></div>
+                  <ul class="project-bullets"><li>Delivered on schedule with roughly 100% participant satisfaction</li><li>Helped establish the operating model both universities adopted for later cohorts, so the tour could run as an annual program</li></ul>
+                  <h5 class="project-h">What I gained</h5>
+                  <p class="project-desc">Running a study tour that doubled as a course for QUT taught me to plan logistics around learning outcomes, because a rushed visit or a late bus costs students understanding and not only time. Hosting the circular economy workshop also showed me how sustainability research moves out of the lecture hall and into real business and policy conversations.</p>
+                  <ul class="project-chips"><li>Project management</li><li>Cross-cultural communication</li><li>Logistics</li><li>Circular economy</li><li>SDGs</li></ul>
                 </template>
               </article>
 
@@ -343,18 +366,32 @@
                 <h4 class="project-card-title">UEH × Osaka Sangyo University (Japan) Student Exchange</h4>
                 <p class="project-card-line">Joined visiting Osaka Sangyo University students as a companion.</p>
                 <template class="project-details">
-                  <p class="project-desc">Joined the Vietnam Study Program 2023 (26 October to 8 November) as a companion to visiting students from Osaka Sangyo University, taking part in the cultural exchange from the participant side.</p>
-                  <ul class="project-chips"><li>Cultural exchange</li><li>Cross-cultural communication</li></ul>
+                  <p class="project-desc">UEH hosted students from Osaka Sangyo University (Japan) for the Vietnam Study Program 2023, a two-week program running from 26 October to 8 November. I joined as a companion, one of the UEH students paired with the Japanese visitors, which put me on the participant side of an exchange for the first time.</p>
+                  <h5 class="project-h">What I did</h5>
+                  <ul class="project-bullets"><li>Accompanied the visiting students through the program's academic and cultural activities, helping them find their way around campus and the city</li><li>Used English to bridge conversations and help the group understand Vietnamese student life and culture</li></ul>
+                  <h5 class="project-h">Result</h5>
+                  <div class="project-stats"><div><b>14</b><span>days</span></div><div><b>2</b><span>countries</span></div></div>
+                  <ul class="project-bullets"><li>Completed the full program and received a certificate of participation from UEH's International Relations Office</li></ul>
+                  <h5 class="project-h">What I gained</h5>
+                  <p class="project-desc">Having organized an exchange myself, being a companion let me see a program from the guest's point of view, and that changed how I think about pacing and support whenever I organize. It also gave me everyday practice in cross-cultural communication outside a formal setting, where most real connection between students actually happens.</p>
+                  <ul class="project-chips"><li>Cultural exchange</li><li>Cross-cultural communication</li><li>English</li></ul>
                 </template>
               </article>
 
               <article class="project-card" data-images="p_l_4_1 p_l_4_2 p_l_4_3">
-                <div class="project-card-head"><span class="badge badge-bark">Leadership</span><span>UEH student club · Jun–Dec 2022</span></div>
-                <h4 class="project-card-title">Extended BELL Club: Bi-weekly English Speaking Group</h4>
-                <p class="project-card-line">Ran a bi-weekly English speaking group for UEH students.</p>
+                <div class="project-card-head"><span class="badge badge-bark">Leadership</span><span>UEH · Jun–Dec 2022</span></div>
+                <h4 class="project-card-title">Speaking Group Extended: Bi-weekly English Speaking Sessions</h4>
+                <p class="project-card-line">Co-organized bi-weekly English speaking sessions at UEH.</p>
                 <template class="project-details">
-                  <p class="project-desc">Ran a bi-weekly program at UEH that encouraged students to practice speaking English with one another.</p>
-                  <ul class="project-chips"><li>Community building</li><li>English language</li><li>Student engagement</li></ul>
+                  <p class="project-desc">Many UEH students could read English well but rarely had a relaxed space to speak it. Speaking Group Extended, run with UEH's BELL Club, offered bi-weekly themed sessions where students practiced speaking with one another, and I was one of its organizers from June to December 2022.</p>
+                  <h5 class="project-h">What I did</h5>
+                  <ul class="project-bullets"><li>Co-organized around 12 bi-weekly sessions, planning the themes and activities, including a Halloween edition built around a game theme</li><li>Facilitated group conversations and games during sessions so that speaking time was shared across participants</li></ul>
+                  <h5 class="project-h">Result</h5>
+                  <div class="project-stats"><div><b>~12</b><span>sessions</span></div><div><b>20 to 30</b><span>students per session</span></div><div><b>240+</b><span>student attendances</span></div></div>
+                  <ul class="project-bullets"><li>Kept the sessions running every two weeks for about six months, with 20 to 30 students attending each one</li></ul>
+                  <h5 class="project-h">What I gained</h5>
+                  <p class="project-desc">Organizing a recurring program taught me that consistency matters more than any single great event, because students come back only when they trust the next session will happen and be worth their time. It was also my first experience of leading peers in a volunteer setting, where motivation has to be earned rather than assigned.</p>
+                  <ul class="project-chips"><li>Community building</li><li>Event planning</li><li>English language</li><li>Student engagement</li></ul>
                 </template>
               </article>
 
@@ -377,12 +414,15 @@
                 <h4 class="project-card-title">Vietnam Real Estate Market Report: National, Ho Chi Minh City and Industrial Property</h4>
                 <p class="project-card-line">Vietnam's property market, from national trends to industrial parks.</p>
                 <template class="project-details">
-                  <p class="project-desc">Course report analyzing Vietnam's real estate market from the national picture to Ho Chi Minh City, with a segment study of industrial property covering rents, occupancy and FDI.</p>
-                  <ul class="project-bullets">
-                    <li>Compared industrial park land rents of USD 140 to 300 per m² in Ho Chi Minh City, at 95% occupancy, with USD 100 to 250 in neighboring Binh Duong</li>
-                    <li>Concluded that land scarcity is pushing new supply outward and toward multi-story factories</li>
-                  </ul>
-                  <ul class="project-chips"><li>Market analysis</li><li>Real estate</li><li>Industrial property</li></ul>
+                  <p class="project-desc">By 2023 Vietnam's property market had slowed after years of rapid growth, while industrial property in the south kept drawing investors. For the Principles of Valuation course, I wrote an individual 28-page market report that moves from the national picture to Ho Chi Minh City and then into a segment study of industrial property.</p>
+                  <h5 class="project-h">What I did</h5>
+                  <ul class="project-bullets"><li>Analyzed national market size, GDP contribution and FDI flows using data from the General Statistics Office, Mordor Intelligence and the Ho Chi Minh City Industrial and Export Processing Zones Authority (Hepza)</li><li>Assessed Ho Chi Minh City through its economic conditions, demographics, supply and demand, infrastructure and government policy</li><li>Studied industrial property rents, occupancy and capital flows, and compared Ho Chi Minh City with neighboring Binh Duong</li></ul>
+                  <h5 class="project-h">Result</h5>
+                  <div class="project-stats"><div><b>3.46%</b><span>real estate share of GDP in 2022</span></div><div><b>95%</b><span>industrial park occupancy in HCMC</span></div><div><b>172%</b><span>of the 2023 investment target reached by HCMC industrial parks</span></div></div>
+                  <ul class="project-bullets"><li>Real estate contributed 3.46% of GDP in 2022, more than VND 328,000 billion, and the residential market was projected to grow from USD 22.44 billion in 2023 to USD 40.53 billion by 2028</li><li>Industrial land in Ho Chi Minh City rented for USD 140 to 300 per m², compared with USD 100 to 250 in Binh Duong</li><li>Concluded that land scarcity is pushing new supply outward and upward, and recommended industrial park optimization, high-rise factories and legal reform of the Land and Housing Laws</li></ul>
+                  <h5 class="project-h">What I gained</h5>
+                  <p class="project-desc">Writing the report alone meant I had to own every number, which taught me to check statistics against more than one source before trusting them. It also showed me that valuing property depends as much on reading policy and infrastructure as on reading prices.</p>
+                  <ul class="project-chips"><li>Market analysis</li><li>Real estate</li><li>Industrial property</li><li>Valuation</li></ul>
                 </template>
               </article>
 
@@ -391,13 +431,15 @@
                 <h4 class="project-card-title">Optimal Stock Portfolio: Simulation, Optimization and Backtest</h4>
                 <p class="project-card-line">Built and backtested a VND 500 million stock and T-bill portfolio.</p>
                 <template class="project-details">
-                  <p class="project-desc">Built and tested a stock and treasury bill portfolio for a VND 500 million capital base, starting from macro, industry and company analysis of six listed Vietnamese firms.</p>
-                  <ul class="project-bullets">
-                    <li>Simulated 20,000 weight combinations in Excel and used Solver to find the minimum variance and Sharpe-maximizing portfolios</li>
-                    <li>Allocated 83.68% to five stocks and 16.32% to treasury bills against a 20% annual return target</li>
-                    <li>A one-year in-sample backtest returned 20.06% (VND 100.3 million) while the VN-Index fell about 31%</li>
-                  </ul>
-                  <ul class="project-chips"><li>Excel</li><li>Solver</li><li>Portfolio optimization</li><li>Sharpe ratio</li></ul>
+                  <p class="project-desc">For the Investment Analysis and Management course, our team of five had to build a portfolio for a VND 500 million capital base and test it over a real year of market data. I managed the team, led the data analysis and wrote the Results and Discussion section.</p>
+                  <h5 class="project-h">What I did</h5>
+                  <ul class="project-bullets"><li>Managed the timeline and task allocation for the five members</li><li>Screened six listed Vietnamese firms through macro, industry and company analysis, then selected five stocks: SAB, SCD, ANV, VSH and SBA</li><li>Ran the analysis, simulating 20,000 weight combinations in Excel and using Solver to find the minimum variance and Sharpe-maximizing portfolios, then exported the results and charts</li></ul>
+                  <h5 class="project-h">Result</h5>
+                  <div class="project-stats"><div><b>20.06%</b><span>one-year return</span></div><div><b>VND 100.3M</b><span>profit on VND 500M</span></div><div><b>−31%</b><span>VN-Index over the same period</span></div></div>
+                  <ul class="project-bullets"><li>Allocated 83.68% to the five stocks and 16.32% to treasury bills against a 20% annual return target</li><li>Held from 1 March 2022 to 28 February 2023, the portfolio returned 20.06% while the VN-Index fell about 31%</li><li>VSH led with a 43.07% gain and SBA added 30.1%, while SCD lost 11.11%</li></ul>
+                  <h5 class="project-h">What I gained</h5>
+                  <p class="project-desc">Watching one holding lose 11% while the portfolio still beat its target made diversification real to me in a way the formulas alone never did. Managing four teammates on a tight deadline also taught me to start the modelling and the writing in parallel, so the analysis was never waiting on a draft.</p>
+                  <ul class="project-chips"><li>Excel</li><li>Solver</li><li>Portfolio optimization</li><li>Sharpe ratio</li><li>Team leadership</li></ul>
                 </template>
               </article>
 
@@ -406,18 +448,32 @@
                 <h4 class="project-card-title">ESG Scores and Financial Performance: Do Companies with Higher ESG Scores Perform Better Financially?</h4>
                 <p class="project-card-line">Testing in Tableau whether higher ESG means better returns.</p>
                 <template class="project-details">
-                  <p class="project-desc">Final project for the course "From Data to Decisions: Mastering Data Mining, Analysis and Predictive Analytics in Business," examining the link between ESG scores and financial performance with Tableau.</p>
-                  <ul class="project-chips"><li>Tableau</li><li>ESG</li><li>Financial performance</li></ul>
+                  <p class="project-desc">Managers increasingly treat ESG as a signal of long-term value, but have little clear evidence on which pillars actually drive returns. For AIT's course From Data to Decisions, our team of four examined whether firms with higher ESG scores perform better financially, using a panel of 1,000 firms from 2015 to 2025. I managed the team and led the data analysis.</p>
+                  <h5 class="project-h">What I did</h5>
+                  <ul class="project-bullets"><li>Managed the team timeline and the split of tasks</li><li>Cleaned the panel in Stata, winsorizing profit margins at the 1st and 99th percentiles, and ran fixed effects regressions on each ESG pillar</li><li>Built Tableau views with Level of Detail expressions to compare ESG Leaders and Laggards by industry and region</li></ul>
+                  <h5 class="project-h">Result</h5>
+                  <div class="project-stats"><div><b>1,000</b><span>firms over 10 years</span></div><div><b>13% vs 10.2%</b><span>profit margin, Leaders vs Laggards</span></div><div><b>β = 0.035</b><span>Governance, the only significant pillar</span></div></div>
+                  <ul class="project-bullets"><li>ESG Leaders averaged nearly 13% profit margins against 10.2% for Laggards, and higher ESG scores were significantly linked to larger market capitalization</li><li>Governance was the only pillar that significantly drove profitability (p &lt; 0.01), while the payoff was largest in asset-light sectors such as Technology, where Leaders reached 19% margins</li><li>Recommended that executives put Governance first, tailor ESG investment to each sector and track environmental progress through intensity metrics</li></ul>
+                  <h5 class="project-h">What I gained</h5>
+                  <p class="project-desc">The project taught me to keep correlation and causation clearly apart, since survivorship bias and unverified ratings limit what any ESG dataset can prove. Pairing Stata for inference with Tableau for storytelling also showed me how much a finding gains when decision makers can see it rather than just read it.</p>
+                  <ul class="project-chips"><li>Stata</li><li>Tableau</li><li>Fixed effects</li><li>ESG</li><li>Financial performance</li></ul>
                 </template>
               </article>
 
               <article class="project-card" data-images="p_a_4_1">
                 <div class="project-card-head"><span class="badge badge-leaf">Data Analysis</span><span>AIT · Jul 2026</span></div>
-                <h4 class="project-card-title">Business Intelligence Dashboards in Power BI</h4>
-                <p class="project-card-line">Interactive Power BI dashboards built for a data analytics course.</p>
+                <h4 class="project-card-title">Mini World Cup Dashboard with MySQL and Power BI</h4>
+                <p class="project-card-line">An interactive dashboard of 964 World Cup matches.</p>
                 <template class="project-details">
-                  <p class="project-desc">Course project building interactive business dashboards in Power BI as part of a data analytics essentials course.</p>
-                  <ul class="project-chips"><li>Power BI</li><li>Dashboards</li><li>Business intelligence</li></ul>
+                  <p class="project-desc">The Data Analytics Essentials course at AIT was taught by Maheshwor Shrestha, a doctoral candidate at the AIT School of Management who has worked as Lead Data Architect at CPAxtra and as a Business Intelligence Consultant. For the course project, I built an end-to-end dashboard on the history of the World Cup.</p>
+                  <h5 class="project-h">What I did</h5>
+                  <ul class="project-bullets"><li>Prepared and queried the match data in MySQL</li><li>Built an interactive Power BI dashboard with KPI cards, a year range slider, goals by team and by year, and a map of results by country</li><li>Added a short written insight panel so readers know what question each visual answers</li></ul>
+                  <h5 class="project-h">Result</h5>
+                  <div class="project-stats"><div><b>964</b><span>matches</span></div><div><b>22</b><span>tournaments</span></div><div><b>55.19%</b><span>home win rate</span></div></div>
+                  <ul class="project-bullets"><li>Summarized 964 matches and about 2,720 goals across 22 tournaments in a single interactive page</li></ul>
+                  <h5 class="project-h">What I gained</h5>
+                  <p class="project-desc">This was my first hands-on project using MySQL and Power BI together, and learning from someone who builds data architecture in industry showed me that a good dashboard starts with a clean data model rather than with charts.</p>
+                  <ul class="project-chips"><li>MySQL</li><li>Power BI</li><li>Dashboards</li><li>Business intelligence</li></ul>
                 </template>
               </article>
 
