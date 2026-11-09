@@ -236,7 +236,8 @@
 
     <!-- 4. Projects
          Each project is one <article class="project-card">. The card shows the badge, meta line, title,
-         one-line summary and the first two images listed in data-images. Everything inside
+         one-line summary and the first two images listed in data-images
+         (or data-card-images, when the card should show a different pair from the popup's order). Everything inside
          <template class="project-details"> appears only in the Read More popup.
          Images: list base names (no extension) from images/; web copies live in images/web/thumb and images/web/full. -->
     <section id="projects" class="section bg-bark-50 overflow-x-clip">
@@ -269,7 +270,7 @@
                 </template>
               </article>
 
-              <article class="project-card" data-images="p_r_2_1 p_r_2_2">
+              <article class="project-card" data-images="p_r_2_1 p_r_2_3 p_r_2_2" data-card-images="p_r_2_1 p_r_2_2">
                 <div class="project-card-head"><span class="badge badge-leaf">Published</span><span>UEH500 · Jan 2024</span></div>
                 <h4 class="project-card-title">Climate, Biological and Economics, Health-Induced Shocks, Household Resource Allocation and Poverty Status: A Case of Vietnam</h4>
                 <p class="project-card-line">Award-winning study of shocks and household poverty.</p>

@@ -211,7 +211,7 @@
 
     cards.forEach((card) => {
       const title = $('.project-card-title', card).textContent.trim();
-      const images = imagesOf(card).slice(0, 2);
+      const images = (card.dataset.cardImages ? card.dataset.cardImages.split(/\s+/).filter(Boolean) : imagesOf(card)).slice(0, 2);
       if (images.length) {
         const media = document.createElement('div');
         media.className = 'project-card-media';
