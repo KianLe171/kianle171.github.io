@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-pt-20 motion-safe:scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Khoa Tran Huu Le | Business Analytics &amp; Public Policy</title>
+  <meta name="description" content="Portfolio of Khoa Tran Huu Le (Kian): research, data analytics and program coordination for child welfare, vulnerable communities and sustainable development.">
+  <meta name="theme-color" content="#2F6F4E">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Khoa Tran Huu Le | Business Analytics &amp; Public Policy">
+  <meta property="og:description" content="Data, econometrics and policy analysis for child welfare, vulnerable communities and sustainable development.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%232F6F4E'/%3E%3Cpath d='M32 48V28' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M32 36c-9-1-13-7-13-14 8 0 13 5 13 14z' fill='white'/%3E%3Cpath d='M32 31c8-1 12-6 12-13-7 0-12 5-12 13z' fill='%23F3E6D8'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tailwind.config.js"></script>
+  <style type="text/tailwindcss">
+    @layer base {
+      body { @apply bg-white font-sans text-stone-700 antialiased; }
+      h1, h2, h3, h4 { @apply font-serif; }
+    }
+    @layer components {
+      .container-x { @apply mx-auto w-full max-w-6xl px-5 sm:px-8; }
+      .section { @apply py-20 sm:py-24; }
+      .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.18em] text-leaf-700; }
+      .section-title { @apply mt-2 text-3xl font-semibold text-bark-900 sm:text-4xl; }
+      .section-lead { @apply mt-4 max-w-2xl text-base leading-relaxed text-stone-600; }
+      .btn-primary { @apply inline-flex items-center justify-center rounded-full bg-leaf-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-leaf-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-leaf-600 focus-visible:ring-offset-2; }
+      .btn-ghost { @apply inline-flex items-center justify-center rounded-full border border-bark-300 bg-white px-6 py-3 text-sm font-semibold text-bark-800 transition hover:bg-bark-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-leaf-600 focus-visible:ring-offset-2; }
+      .nav-link { @apply rounded-md px-1 py-1 text-sm font-medium text-stone-600 transition hover:text-leaf-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-leaf-600 aria-[current=true]:text-leaf-700 aria-[current=true]:underline aria-[current=true]:decoration-2 aria-[current=true]:underline-offset-8; }
+      .mobile-link { @apply block rounded-md px-3 py-2 text-base font-medium text-stone-700 hover:bg-bark-50 hover:text-leaf-700; }
+      .card { @apply rounded-2xl border border-bark-100 bg-white p-6 shadow-sm; }
+      .chip { @apply inline-flex items-center rounded-full bg-leaf-50 px-3 py-1 text-xs font-medium text-leaf-800 ring-1 ring-inset ring-leaf-100; }
+      .chip-brown { @apply inline-flex items-center rounded-full bg-bark-50 px-3 py-1 text-xs font-medium text-bark-800 ring-1 ring-inset ring-bark-100; }
+      .badge { @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ring-1 ring-inset; }
+      .badge-leaf { @apply bg-leaf-50 text-leaf-800 ring-leaf-100; }
+      .badge-bark { @apply bg-bark-50 text-bark-800 ring-bark-100; }
+      .badge-stone { @apply bg-stone-100 text-stone-700 ring-stone-200; }
+      .filter-btn { @apply rounded-full border border-bark-200 bg-white px-4 py-2 text-sm font-medium text-bark-800 transition hover:bg-bark-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-leaf-600 aria-pressed:border-leaf-600 aria-pressed:bg-leaf-600 aria-pressed:text-white; }
+      .bullets { @apply mt-4 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-stone-600 marker:text-leaf-500; }
+    }
+  </style>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-leaf-700 focus:shadow">Skip to content</a>
+
+  <!-- Sticky navigation -->
+  <header class="sticky top-0 z-50 border-b border-bark-100 bg-white/90 backdrop-blur">
+    <nav class="container-x flex h-16 items-center justify-between" aria-label="Primary">
+      <a href="#home" class="font-serif text-lg font-semibold text-bark-900">Khoa Tran Huu Le</a>
+      <ul class="hidden items-center gap-6 lg:flex">
+        <li><a class="nav-link" href="#about">About</a></li>
+        <li><a class="nav-link" href="#skills">Skills</a></li>
+        <li><a class="nav-link" href="#projects">Projects</a></li>
+        <li><a class="nav-link" href="#experience">Experience</a></li>
+        <li><a class="nav-link" href="#achievements">Achievements</a></li>
+        <li><a class="nav-link" href="#writing">Writing</a></li>
+        <li><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+      <button id="menu-button" type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-md text-bark-800 hover:bg-bark-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-leaf-600 lg:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu">
+        <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg id="icon-close" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="hidden border-t border-bark-100 bg-white lg:hidden">
+      <ul class="container-x space-y-1 py-3">
+        <li><a class="mobile-link" href="#about">About</a></li>
+        <li><a class="mobile-link" href="#skills">Skills</a></li>
+        <li><a class="mobile-link" href="#projects">Projects</a></li>
+        <li><a class="mobile-link" href="#experience">Experience</a></li>
+        <li><a class="mobile-link" href="#achievements">Achievements</a></li>
+        <li><a class="mobile-link" href="#writing">Writing</a></li>
+        <li><a class="mobile-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- 1. Hero -->
+    <section id="home" class="bg-gradient-to-b from-bark-50 to-white">
+      <div class="container-x grid items-center gap-12 py-16 sm:py-24 md:grid-cols-5">
+        <div class="md:col-span-3">
+          <p class="eyebrow">Portfolio</p>
+          <h1 class="mt-3 text-4xl font-semibold leading-tight text-bark-900 sm:text-5xl lg:text-6xl">Khoa Tran Huu Le</h1>
+          <p class="mt-4 text-lg font-medium text-leaf-700 sm:text-xl">Business Analytics &amp; Public Policy Specialist | Aspiring International Development Professional</p>
+          <p class="mt-5 max-w-xl text-base leading-relaxed text-stone-600">I use data, econometrics and policy analysis to understand how children, households and communities are affected by change, and to turn the evidence into practical recommendations.</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#projects" class="btn-primary">View Projects</a>
+            <a href="#contact" class="btn-ghost">Contact Me</a>
+          </div>
+          <dl class="mt-12 grid max-w-xl grid-cols-3 gap-4 border-t border-bark-100 pt-6">
+            <div class="flex flex-col"><dt class="order-last mt-1 text-xs text-stone-500">UEH GPA, High Distinction</dt><dd class="font-serif text-2xl font-semibold text-bark-900">3.85</dd></div>
+            <div class="flex flex-col"><dt class="order-last mt-1 text-xs text-stone-500">Research papers</dt><dd class="font-serif text-2xl font-semibold text-bark-900">2</dd></div>
+            <div class="flex flex-col"><dt class="order-last mt-1 text-xs text-stone-500">Exchange participants coordinated</dt><dd class="font-serif text-2xl font-semibold text-bark-900">60+</dd></div>
+          </dl>
+        </div>
+        <div class="flex justify-center md:col-span-2" aria-hidden="true">
+          <svg viewBox="0 0 200 200" class="w-full max-w-[16rem] md:max-w-xs">
+            <circle cx="100" cy="100" r="92" fill="#F3E6D8"/>
+            <path d="M100 150 C100 120 100 100 100 70" stroke="#2F6F4E" stroke-width="6" stroke-linecap="round" fill="none"/>
+            <path d="M100 100 C70 95 55 75 55 55 C80 55 100 70 100 100Z" fill="#5FA073"/>
+            <path d="M100 85 C130 80 145 60 145 40 C120 40 100 55 100 85Z" fill="#3F8458"/>
+            <ellipse cx="100" cy="155" rx="42" ry="12" fill="#A56F46"/>
+            <ellipse cx="100" cy="152" rx="30" ry="8" fill="#8A5A3B"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. About -->
+    <section id="about" class="section bg-bark-50">
+      <div class="container-x grid gap-10 lg:grid-cols-3">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2 class="section-title">Data with a purpose</h2>
+        </div>
+        <div class="space-y-5 text-base leading-relaxed text-stone-700 lg:col-span-2">
+          <p>I'm Khoa Tran Huu Le, known as Kian, an economics and public policy researcher based in Bangkok. My path began with a High Distinction degree in Investment Economics at the University of Economics Ho Chi Minh City (UEH) and now combines an MSc in Business Analytics &amp; Digital Transformation at the Asian Institute of Technology, supported by His Majesty the King's Scholarship of the Royal Thai Government, with an MA in Public Policy at O.P. Jindal Global University.</p>
+          <p>What ties these together is one question: who is being left behind, and what would change that? I apply econometrics, data science and analytics to social impact, child welfare and sustainable development, from the link between household digital literacy and clean energy adoption in Vietnam to how climate and health shocks relate to household poverty.</p>
+          <p>My master's research now looks at governance readiness for child online safety in Thailand's digital economy, including risks from AI-generated abuse material and deepfake-enabled exploitation. I'm looking to contribute to NGOs, UN agencies and international development organizations where rigorous analysis helps protect children and vulnerable communities.</p>
+          <ul class="flex flex-wrap gap-2 pt-2" aria-label="Focus areas">
+            <li class="chip-brown">Child protection and online safety</li>
+            <li class="chip-brown">AI governance</li>
+            <li class="chip-brown">Development economics</li>
+            <li class="chip-brown">Sustainable development</li>
+            <li class="chip-brown">Program coordination</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Skills -->
+    <section id="skills" class="section">
+      <div class="container-x">
+        <p class="eyebrow">Skills</p>
+        <h2 class="section-title">Tools I use, and where I've used them</h2>
+        <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+          <div class="card">
+            <h3 class="text-lg font-semibold text-bark-900">Data &amp; Analytics</h3>
+            <ul class="mt-4 space-y-4 text-sm">
+              <li><span class="font-medium text-bark-900">Stata</span> <span class="text-stone-600">xtreg, panel data regression, logit</span><br><span class="text-xs text-stone-500">Used in the ACBES 2023 and UEH500 papers</span></li>
+              <li><span class="font-medium text-bark-900">Python</span> <span class="text-stone-600">Pandas, Matplotlib, Scikit-learn</span><br><span class="text-xs text-stone-500">Used in Big Data Analytics coursework (Google Colab)</span></li>
+              <li><span class="font-medium text-bark-900">Tableau</span><br><span class="text-xs text-stone-500">Used in the ESG scores and financial performance project</span></li>
+              <li><span class="font-medium text-bark-900">Power BI</span><br><span class="text-xs text-stone-500">Used in the Data Analytics Essentials course</span></li>
+              <li><span class="font-medium text-bark-900">Excel</span> <span class="text-stone-600">Solver, Data Tables, simulation</span><br><span class="text-xs text-stone-500">Used in the portfolio optimization project</span></li>
+              <li><span class="font-medium text-bark-900">Econometrics</span> <span class="text-stone-600">logit and probit, panel data, IV (2SLS), heterogeneity analysis</span><br><span class="text-xs text-stone-500">Research papers and coursework</span></li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3 class="text-lg font-semibold text-bark-900">Research &amp; Policy Methods</h3>
+            <ul class="bullets">
+              <li>Survey design and secondary dataset construction</li>
+              <li>Policy and legal document analysis</li>
+              <li>Semi-structured interviewing</li>
+              <li>Comparative case analysis</li>
+              <li>Systematic literature review</li>
+              <li>Rubric design and comparative coding</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3 class="text-lg font-semibold text-bark-900">Program &amp; Project Management</h3>
+            <ul class="bullets">
+              <li>International exchange coordination (60+ participants, three countries)</li>
+              <li>Workshop design and cross-cultural facilitation</li>
+              <li>Stakeholder coordination and logistics</li>
+              <li>Workflow design with Lark and ERP tool evaluation</li>
+              <li>Google Project Management Certificate</li>
+            </ul>
+          </div>
+
+          <div class="card md:col-span-2 lg:col-span-3">
+            <h3 class="text-lg font-semibold text-bark-900">Languages</h3>
+            <div class="mt-4 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+              <ul class="flex flex-wrap gap-x-10 gap-y-2 text-sm">
+                <li><span class="font-medium text-bark-900">English</span> <span class="text-stone-600">Advanced (C1)</span></li>
+                <li><span class="font-medium text-bark-900">Vietnamese</span> <span class="text-stone-600">Native</span></li>
+              </ul>
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-xs font-semibold uppercase tracking-wider text-stone-500">Also learning</span>
+                <span class="chip">French · beginner</span>
+                <span class="chip">Thai · beginner</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Projects -->
+    <section id="projects" class="section bg-bark-50">
+      <div class="container-x">
+        <p class="eyebrow">Projects</p>
+        <h2 class="section-title">Research, programs and analysis</h2>
+        <p class="section-lead">Filter by type. Each card shows what I did, the tools I used and, where available, what the work found.</p>
+
+        <div class="mt-8 flex flex-wrap gap-2" role="group" aria-label="Filter projects">
+          <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="filter-btn" data-filter="research" aria-pressed="false">Research</button>
+          <button type="button" class="filter-btn" data-filter="exchange" aria-pressed="false">Exchange &amp; Volunteering</button>
+          <button type="button" class="filter-btn" data-filter="analytics" aria-pressed="false">Investment &amp; Analytics</button>
+        </div>
+        <p id="project-count" class="mt-4 text-sm text-stone-500" aria-live="polite"></p>
+
+        <!-- To add a project, copy any card below and change data-category, text and tags. -->
+        <div class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+          <!-- Research -->
+          <article class="card flex flex-col" data-category="research">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="badge badge-leaf">Research</span>
+              <span class="text-xs text-stone-500">ACBES 2023 · Aug 2023</span>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">Impact of Digital Literacy on Vietnamese Households' Clean Energy Consumption</h3>
+            <p class="mt-3 text-sm leading-relaxed text-stone-600">Presented at the 5th Asia Conference on Business and Economics, organized by the Journal of Asian Business and Economics Studies. I led a five-member team through a six-month empirical study.</p>
+            <ul class="bullets">
+              <li>Built binary and ratio-based measures from the Vietnam Household Living Standard Survey (2016 and 2018), covering about 9,300 households in all 63 provinces</li>
+              <li>Logit and panel models found a significant positive association, with clean-energy households showing digital literacy rates 2.5 times higher</li>
+              <li>Heterogeneity analysis showed a stronger urban effect linked to infrastructure gaps, leading to policy recommendations on digital infrastructure and digital literacy in education</li>
+            </ul>
+            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Tools and topics"><li class="chip">Stata</li><li class="chip">Logit</li><li class="chip">Panel data</li><li class="chip">Policy recommendations</li></ul>
+          </article>
+
+          <article class="card flex flex-col" data-category="research">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="badge badge-leaf">Research</span>
+              <span class="text-xs text-stone-500">UEH500 Award</span>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">Climate, Biological and Economics, Health-Induced Shocks, Household Resource Allocation and Poverty Status: A Case of Vietnam</h3>
+            <p class="mt-3 text-sm leading-relaxed text-stone-600">Award-winning paper analyzing how climate, biological, economic and health-induced shocks relate to household resource allocation and poverty status in Vietnam, using Stata.</p>
+            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Tools and topics"><li class="chip">Stata</li><li class="chip">Household poverty</li><li class="chip">Shocks</li><li class="chip">Vietnam</li></ul>
+          </article>
+
+          <article class="card flex flex-col" data-category="research">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div class="flex gap-2"><span class="badge badge-leaf">Research</span><span class="badge badge-bark">In progress</span></div>
+              <span class="text-xs text-stone-500">AIT master's thesis</span>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">Governance Readiness for Child Online Safety in Thailand's Digital Economy</h3>
+            <p class="mt-3 text-sm leading-relaxed text-stone-600">Examines how adequately Thailand's emerging AI governance framework addresses child online safety, particularly AI-generated abuse material and deepfake-enabled exploitation, and what a diagnostic assessment adapted to the Thai context reveals that a generic application of UNESCO's Readiness Assessment Methodology would not.</p>
+            <ul class="bullets">
+              <li>Policy document analysis of Thai and Vietnamese AI governance instruments against UNESCO RAM dimensions</li>
+              <li>Eight to ten interviews in Bangkok, producing a comparative assessment of strengths, gaps and recommendations</li>
+            </ul>
+            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Tools and topics"><li class="chip">AI governance</li><li class="chip">Child protection</li><li class="chip">UNESCO RAM</li><li class="chip">Qualitative research</li></ul>
+          </article>
+
+          <!-- Exchange & Volunteering -->
+          <article class="card flex flex-col" data-category="exchange">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="badge badge-bark">Exchange &amp; Volunteering</span>
+              <span class="text-xs text-stone-500">UEH CELG · 2023</span>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">UN SDGs Student Exchange Program: UEH × Tokyo Keizai University (Japan)</h3>
+            <p class="mt-3 text-sm leading-relaxed text-stone-600">Coordinated the Vietnam–Japan Youth Exchange Program 2023, the first iteration of the partnership, handling logistics and facilitation for a program built around the 17 UN Sustainable Development Goals and cultural exchange.</p>
+            <ul class="bullets">
+              <li>Designed and facilitated workshops on climate action, quality education and responsible consumption</li>
+              <li>Across both 2023 pilots: 60+ participants from three countries, delivered on schedule, with roughly 100% participant satisfaction</li>
+              <li>Established the operating model both universities adopted for later cohorts, turning one-off pilots into annual programs</li>
+            </ul>
+            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Skills"><li class="chip">Project management</li><li class="chip">Cross-cultural communication</li><li class="chip">Logistics</li><li class="chip">SDGs</li></ul>
+          </article>
+
+          <article class="card flex flex-col" data-category="exchange">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="badge badge-bark">Exchange &amp; Volunteering</span>
+              <span class="text-xs text-stone-500">UEH CELG · 2023</span>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">UN SDGs Student Exchange Program: UEH × Queensland University of Technology (Australia)</h3>
+            <p class="mt-3 text-sm leading-relaxed text-stone-600">Coordinated the QUT–UEH Exchange Program 2023, the first iteration of the partnership, handling logistics and facilitation for a program built around the 17 UN Sustainable Development Goals and cultural exchange.</p>
+            <ul class="bullets">
+              <li>Designed and facilitated workshops on climate action, quality education and responsible consumption</li>
+              <li>Across both 2023 pilots: 60+ participants from three countries, delivered on schedule, with roughly 100% participant satisfaction</li>
+              <li>Established the operating model both universities adopted for later cohorts, turning one-off pilots into annual programs</li>
+            </ul>
+            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Skills"><li class="chip">Project management</li><li class="chip">Cross-cultural communication</li><li class="chip">Logistics</li><li class="chip">SDGs</li></ul>
+          </article>
+
+          <article class="card flex flex-col" data-category="exchange">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="badge badge-bark">Exchange &amp; Volunteering</span>
+              <span class="text-xs text-stone-500">UEH CELG</span>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">UEH × Osaka Sangyo University (Japan) Student Exchange</h3>
+            <p class="mt-3 text-sm leading-relaxed text-stone-600">Joined a similar exchange as a companion to visiting students from Osaka Sangyo University, taking part in the cultural exchange from the participant side.</p>
+            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Skills"><li class="chip">Cultural exchange</li><li class="chip">Cross-cultural communication</li></ul>
+          </article>
+
+          <article class="card flex flex-col" data-category="exchange">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="badge badge-bark">Exchange &amp; Volunteering</span>
+              <span class="text-xs text-stone-500">UEH student club</span>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">Extended BELL Club: Bi-weekly English Speaking Group</h3>
+            <p class="mt-3 text-sm leading-relaxed text-stone-600">Ran a bi-weekly program at UEH that encouraged students to practice speaking English with one another.</p>
+            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Skills"><li class="chip">Community building</li><li class="chip">English language</li><li class="chip">Student engagement</li></ul>
+          </article>
+
+          <!-- Investment & Analytics -->
+          <article class="card flex flex-col" data-category="analytics">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="badge badge-stone">Investment &amp; Analytics</span>
+              <span class="text-xs text-stone-500">Principles of Valuation · 2023</span>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">Vietnam Real Estate Market Report: National, Ho Chi Minh City and Industrial Property</h3>
+            <p class="mt-3 text-sm leading-relaxed text-stone-600">Course report analyzing Vietnam's real estate market from the national picture to Ho Chi Minh City, with a segment study of industrial property covering rents, occupancy and FDI.</p>
+            <ul class="bullets">
+              <li>Compared industrial park land rents of USD 140 to 300 per m² in Ho Chi Minh City, at 95% occupancy, with USD 100 to 250 in neighboring Binh Duong</li>
+              <li>Concluded that land scarcity is pushing new supply outward and toward multi-story factories</li>
+            </ul>
+            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Tools and topics"><li class="chip">Market analysis</li><li class="chip">Real estate</li><li class="chip">Industrial property</li></ul>
+          </article>
+
+          <article class="card flex flex-col" data-category="analytics">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="badge badge-stone">Investment &amp; Analytics</span>
+              <span class="text-xs text-stone-500">Team of five · Apr 2023</span>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">Optimal Stock Portfolio: Simulation, Optimization and Backtest</h3>
+            <p class="mt-3 text-sm leading-relaxed text-stone-600">Built and tested a stock and treasury bill portfolio for a VND 500 million capital base, starting from macro, industry and company analysis of six listed Vietnamese firms.</p>
+            <ul class="bullets">
+              <li>Simulated 20,000 weight combinations in Excel and used Solver to find the minimum variance and Sharpe-maximizing portfolios</li>
+              <li>Allocated 83.68% to five stocks and 16.32% to treasury bills against a 20% annual return target</li>
+              <li>A one-year in-sample backtest returned 20.06% (VND 100.3 million) while the VN-Index fell about 31%</li>
+            </ul>
+            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Tools and topics"><li class="chip">Excel</li><li class="chip">Solver</li><li class="chip">Portfolio optimization</li><li class="chip">Sharpe ratio</li></ul>
+          </article>
+
+          <article class="card flex flex-col" data-category="analytics">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="badge badge-stone">Investment &amp; Analytics</span>
+              <span class="text-xs text-stone-500">Graduate course project</span>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">ESG Scores and Financial Performance: Do Companies with Higher ESG Scores Perform Better Financially?</h3>
+            <p class="mt-3 text-sm leading-relaxed text-stone-600">Final project for the course "From Data to Decisions: Mastering Data Mining, Analysis and Predictive Analytics in Business," examining the link between ESG scores and financial performance with Tableau.</p>
+            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Tools and topics"><li class="chip">Tableau</li><li class="chip">ESG</li><li class="chip">Financial performance</li></ul>
+          </article>
+
+          <article class="card flex flex-col" data-category="analytics">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="badge badge-stone">Investment &amp; Analytics</span>
+              <span class="text-xs text-stone-500">Data Analytics Essentials</span>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold leading-snug text-bark-900">Business Intelligence Dashboards in Power BI</h3>
+            <p class="mt-3 text-sm leading-relaxed text-stone-600">Course project building interactive business dashboards in Power BI as part of a data analytics essentials course.</p>
+            <ul class="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Tools and topics"><li class="chip">Power BI</li><li class="chip">Dashboards</li><li class="chip">Business intelligence</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Experience & Education timeline -->
+    <section id="experience" class="section">
+      <div class="container-x">
+        <p class="eyebrow">Experience &amp; Education</p>
+        <h2 class="section-title">Where I've worked, researched and studied</h2>
+
+        <ol class="relative mt-12 max-w-3xl space-y-10 border-l-2 border-leaf-200 pl-8">
+
+          <li class="relative">
+            <span class="absolute -left-[41px] top-1.5 h-4 w-4 rounded-full border-4 border-white bg-leaf-600 ring-2 ring-leaf-200" aria-hidden="true"></span>
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-1"><span class="badge badge-leaf">Research</span><span class="text-sm text-stone-500">Aug 2026 to Feb 2027</span></div>
+            <h3 class="mt-2 text-lg font-semibold text-bark-900">Master's Research: Governance Readiness for Child Online Safety</h3>
+            <p class="text-sm font-medium text-leaf-700">Asian Institute of Technology · Pathum Thani, Thailand</p>
+            <ul class="bullets">
+              <li>Policy document analysis of Thai and Vietnamese AI governance instruments against UNESCO RAM dimensions, supported by interviews in Bangkok</li>
+            </ul>
+          </li>
+
+          <li class="relative">
+            <span class="absolute -left-[41px] top-1.5 h-4 w-4 rounded-full border-4 border-white bg-leaf-600 ring-2 ring-leaf-200" aria-hidden="true"></span>
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-1"><span class="badge badge-stone">Education</span><span class="text-sm text-stone-500">Oct 2025 to Oct 2026</span></div>
+            <h3 class="mt-2 text-lg font-semibold text-bark-900">Master of Arts in Public Policy</h3>
+            <p class="text-sm font-medium text-leaf-700">O.P. Jindal Global University · Online program</p>
+            <ul class="bullets">
+              <li>Coursework: Policy Assessing &amp; Policy Making for Vulnerable Communities and Multidimensional Poverty Reduction; Foreign Policies of Great, Middle, and Small Powers</li>
+            </ul>
+          </li>
+
+          <li class="relative">
+            <span class="absolute -left-[41px] top-1.5 h-4 w-4 rounded-full border-4 border-white bg-leaf-600 ring-2 ring-leaf-200" aria-hidden="true"></span>
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-1"><span class="badge badge-stone">Education</span><span class="text-sm text-stone-500">Aug 2025 to May 2027</span></div>
+            <h3 class="mt-2 text-lg font-semibold text-bark-900">MSc in Business Analytics &amp; Digital Transformation</h3>
+            <p class="text-sm font-medium text-leaf-700">Asian Institute of Technology · Pathum Thani, Thailand</p>
+            <ul class="bullets">
+              <li>His Majesty the King's Scholarship, granted by the Royal Thai Government</li>
+              <li>Coursework: Business Analytics for Decision-Making, Digital Transformation Strategy, Project Management, Business Intelligence</li>
+            </ul>
+          </li>
+
+          <li class="relative">
+            <span class="absolute -left-[41px] top-1.5 h-4 w-4 rounded-full border-4 border-white bg-leaf-600 ring-2 ring-leaf-200" aria-hidden="true"></span>
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-1"><span class="badge badge-bark">Work</span><span class="text-sm text-stone-500">Aug 2024 to Jan 2025</span></div>
+            <h3 class="mt-2 text-lg font-semibold text-bark-900">Business Development Intern</h3>
+            <p class="text-sm font-medium text-leaf-700">Esarndotcom · Khon Kaen, Thailand</p>
+            <ul class="bullets">
+              <li>Analyzed client operations through customer segmentation and ERP tool evaluation, turning findings into recommendations that informed business strategy</li>
+              <li>Introduced Lark as a single workspace for task assignment, deadline tracking and document approvals, shortening project output delivery time by roughly 30%</li>
+              <li>Built consulting relationships with Thai stakeholders in a multinational business environment</li>
+            </ul>
+          </li>
+
+          <li class="relative">
+            <span class="absolute -left-[41px] top-1.5 h-4 w-4 rounded-full border-4 border-white bg-leaf-600 ring-2 ring-leaf-200" aria-hidden="true"></span>
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-1"><span class="badge badge-leaf">Research</span><span class="text-sm text-stone-500">Aug 2023</span></div>
+            <h3 class="mt-2 text-lg font-semibold text-bark-900">Presenter, 5th Asia Conference on Business and Economics (ACBES 2023)</h3>
+            <p class="text-sm font-medium text-leaf-700">Journal of Asian Business and Economics Studies · Ho Chi Minh City, Vietnam</p>
+            <ul class="bullets">
+              <li>Presented the digital literacy and clean energy study I led with a five-member team</li>
+            </ul>
+          </li>
+
+          <li class="relative">
+            <span class="absolute -left-[41px] top-1.5 h-4 w-4 rounded-full border-4 border-white bg-leaf-600 ring-2 ring-leaf-200" aria-hidden="true"></span>
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-1"><span class="badge badge-bark">Work</span><span class="text-sm text-stone-500">Jul to Dec 2023</span></div>
+            <h3 class="mt-2 text-lg font-semibold text-bark-900">Project Coordinator</h3>
+            <p class="text-sm font-medium text-leaf-700">College of Economics, Law and Government, UEH · Ho Chi Minh City, Vietnam</p>
+            <ul class="bullets">
+              <li>Coordinated two pilot international exchange programs for 60+ participants across three countries (QUT–UEH and Vietnam–Japan with Tokyo Keizai University), delivered on schedule as the first iterations of both partnerships</li>
+              <li>Designed and facilitated workshops translating the UN Sustainable Development Goals into sessions on climate action, quality education and responsible consumption, with roughly 100% participant satisfaction</li>
+              <li>Established the operating model both universities adopted for later cohorts, converting two one-off pilots into annual programs</li>
+            </ul>
+          </li>
+
+          <li class="relative">
+            <span class="absolute -left-[41px] top-1.5 h-4 w-4 rounded-full border-4 border-white bg-leaf-600 ring-2 ring-leaf-200" aria-hidden="true"></span>
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-1"><span class="badge badge-stone">Education</span><span class="text-sm text-stone-500">Aug 2021 to Mar 2025</span></div>
+            <h3 class="mt-2 text-lg font-semibold text-bark-900">Bachelor of Investment Economics</h3>
+            <p class="text-sm font-medium text-leaf-700">University of Economics Ho Chi Minh City (UEH)</p>
+            <ul class="bullets">
+              <li>High Distinction Degree, GPA 3.85</li>
+              <li>Coursework: econometrics, development economics, data analysis, investment analysis and management, principles of valuation</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 6. Achievements & Certificates -->
+    <section id="achievements" class="section bg-bark-50">
+      <div class="container-x">
+        <p class="eyebrow">Achievements &amp; Certificates</p>
+        <h2 class="section-title">Recognition and credentials</h2>
+
+        <div class="mt-10 grid gap-10 lg:grid-cols-2">
+          <div>
+            <h3 class="text-lg font-semibold text-bark-900">Achievements</h3>
+            <ul class="mt-4 space-y-4">
+              <li class="card"><p class="font-medium text-bark-900">His Majesty the King's Scholarship</p><p class="mt-1 text-sm text-stone-600">Royal Thai Government scholarship for the MSc at the Asian Institute of Technology.</p></li>
+              <li class="card"><p class="font-medium text-bark-900">UEH500 Award</p><p class="mt-1 text-sm text-stone-600">Research paper on shocks, household resource allocation and poverty in Vietnam.</p></li>
+              <li class="card"><p class="font-medium text-bark-900">High Distinction, GPA 3.85</p><p class="mt-1 text-sm text-stone-600">Bachelor of Investment Economics, University of Economics Ho Chi Minh City.</p></li>
+              <li class="card"><p class="font-medium text-bark-900">Presenter, ACBES 2023</p><p class="mt-1 text-sm text-stone-600">5th Asia Conference on Business and Economics, Ho Chi Minh City.</p></li>
+              <li class="card"><p class="font-medium text-bark-900">Participant, AIFOD Bangkok Summit 2026</p><p class="mt-1 text-sm text-stone-600">AI for Developing Countries Forum on building sovereign AI capacity, data sovereignty and inclusive finance.</p></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-bark-900">Certificates</h3>
+            <ul class="mt-4 space-y-4">
+              <!-- To link a credential, wrap the title in <a href="YOUR_CREDENTIAL_URL" target="_blank" rel="noopener noreferrer"> -->
+              <li class="card"><p class="font-medium text-bark-900">Google Data Analytics Certificate</p><p class="mt-1 text-sm text-stone-600">Issued by Google.</p></li>
+              <li class="card"><p class="font-medium text-bark-900">Google Project Management Certificate</p><p class="mt-1 text-sm text-stone-600">Issued by Google.</p></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Writing (blog) -->
+    <section id="writing" class="section">
+      <div class="container-x">
+        <p class="eyebrow">Writing</p>
+        <h2 class="section-title">Notes and reflections</h2>
+        <p class="section-lead">Short pieces on data, public policy, child protection and what I'm learning along the way.</p>
+        <div id="posts" class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3" aria-live="polite">
+          <p class="col-span-full text-sm text-stone-500">Loading posts…</p>
+        </div>
+        <noscript><p class="mt-6 text-sm text-stone-600">Posts need JavaScript to load. You can still contact me below.</p></noscript>
+      </div>
+    </section>
+
+    <!-- 8. Contact -->
+    <section id="contact" class="section bg-leaf-900 text-white">
+      <div class="container-x">
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-leaf-200">Contact</p>
+        <h2 class="mt-2 text-3xl font-semibold sm:text-4xl">Let's talk about data, policy and impact</h2>
+        <p class="mt-4 max-w-2xl text-leaf-100">I'm open to internships, research collaborations and project work in analytics, public policy and international development.</p>
+
+        <div class="mt-10 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/15">
+            <p class="text-xs font-semibold uppercase tracking-wider text-leaf-200">Email</p>
+            <a href="mailto:kianisatwork@gmail.com" class="mt-2 block break-all font-medium text-white underline decoration-leaf-300 underline-offset-4 hover:decoration-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white">kianisatwork@gmail.com</a>
+          </div>
+          <div class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/15">
+            <p class="text-xs font-semibold uppercase tracking-wider text-leaf-200">LinkedIn</p>
+            <a href="https://www.linkedin.com/in/kianle/" target="_blank" rel="noopener noreferrer" class="mt-2 block font-medium text-white underline decoration-leaf-300 underline-offset-4 hover:decoration-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white">linkedin.com/in/kianle</a>
+          </div>
+          <div class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/15">
+            <p class="text-xs font-semibold uppercase tracking-wider text-leaf-200">Phone</p>
+            <button id="reveal-phone" type="button" class="mt-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-leaf-800 hover:bg-leaf-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-leaf-900">Show phone numbers</button>
+            <ul id="phone-list" class="mt-2 hidden space-y-3 text-sm"></ul>
+          </div>
+        </div>
+        <!-- A GitHub link is intentionally left off. To add one, copy a card above and point it to your profile. -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-leaf-900 pb-10 text-sm text-leaf-200">
+    <div class="container-x">
+      <div class="flex flex-col justify-between gap-2 border-t border-white/15 pt-6 sm:flex-row">
+        <p>© <span id="year"></span> Khoa Tran Huu Le</p>
+        <p>Built with HTML, Tailwind CSS and vanilla JavaScript.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

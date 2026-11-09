@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-pt-20 motion-safe:scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Writing | Khoa Tran Huu Le</title>
+  <meta name="theme-color" content="#2F6F4E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%232F6F4E'/%3E%3Cpath d='M32 48V28' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M32 36c-9-1-13-7-13-14 8 0 13 5 13 14z' fill='white'/%3E%3Cpath d='M32 31c8-1 12-6 12-13-7 0-12 5-12 13z' fill='%23F3E6D8'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <script src="tailwind.config.js"></script>
+  <style type="text/tailwindcss">
+    @layer components {
+      .chip-brown { @apply inline-flex items-center rounded-full bg-bark-50 px-3 py-1 text-xs font-medium text-bark-800 ring-1 ring-inset ring-bark-100; }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body class="bg-white font-sans text-stone-700 antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-leaf-700 focus:shadow">Skip to content</a>
+  <header class="sticky top-0 z-50 border-b border-bark-100 bg-white/90 backdrop-blur">
+    <nav class="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 sm:px-8" aria-label="Primary">
+      <a href="index.html" class="font-serif text-lg font-semibold text-bark-900">Khoa Tran Huu Le</a>
+      <a href="index.html#writing" class="text-sm font-medium text-leaf-700 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-leaf-600">← All writing</a>
+    </nav>
+  </header>
+
+  <main id="main" class="mx-auto w-full max-w-3xl px-5 py-12 sm:px-8 sm:py-16">
+    <article>
+      <p id="post-meta" class="text-sm text-stone-500"></p>
+      <h1 id="post-title" class="mt-2 font-serif text-3xl font-semibold leading-tight text-bark-900 sm:text-4xl">Loading…</h1>
+      <div id="post-content" class="prose prose-stone mt-8 max-w-none prose-headings:font-serif prose-headings:text-bark-900 prose-a:text-leaf-700 prose-li:marker:text-leaf-500"></div>
+    </article>
+  </main>
+
+  <footer class="border-t border-bark-100 py-8 text-center text-sm text-stone-500">
+    © <span id="year"></span> Khoa Tran Huu Le
+  </footer>
+</body>
+</html>
