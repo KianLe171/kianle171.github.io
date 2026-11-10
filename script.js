@@ -309,6 +309,31 @@
 
     layout();
   });
+
+  /* Recognition and credentials: thumbnail plus fullscreen viewer */
+  $$('.credential').forEach((item) => {
+    const images = imagesOf(item);
+    const media = $('.credential-media', item);
+    if (!images.length || !media) return;
+    const title = $('.credential-title', item).textContent.replace('(opens in a new tab)', '').trim();
+    const thumb = makeImg(IMG_THUMB(images[0]), title);
+    thumb.addEventListener('click', () => openViewer(images, 0, title));
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'fs-btn';
+    button.setAttribute('aria-label', `View ${title} full screen`);
+    button.innerHTML = FULLSCREEN_ICON;
+    button.addEventListener('click', () => openViewer(images, 0, title));
+    media.append(thumb, button);
+    if (images.length > 1) {
+      const count = document.createElement('span');
+      count.className = 'credential-count';
+      count.textContent = `${images.length} images`;
+      count.setAttribute('aria-hidden', 'true');
+      media.appendChild(count);
+    }
+  });
+
   /* ---------- Reveal phone numbers ---------- */
   const phoneButton = $('#reveal-phone');
   const phoneList = $('#phone-list');

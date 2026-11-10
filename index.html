@@ -73,6 +73,22 @@
     .project-group.is-expanded .carousel-track { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); overflow: visible; }
     .project-group.is-expanded .project-card { width: auto; filter: none; opacity: 1; cursor: auto; }
     .project-group.is-expanded .carousel-spacer, .project-group.is-expanded .carousel-nav { display: none; }
+    .credential { display: flex; gap: 1.25rem; align-items: flex-start; border: 1px solid #E6CBB1; border-radius: 1rem; background: #fff; padding: 1rem; box-shadow: 0 1px 2px rgb(0 0 0 / .05); }
+    .credential-media { position: relative; flex: 0 0 9.5rem; height: 7.5rem; display: flex; align-items: center; justify-content: center; border-radius: .5rem; background: #F7F1EA; overflow: hidden; }
+    @media (min-width: 640px) { .credential-media { flex-basis: 11rem; height: 8.5rem; } }
+    .credential-media img { max-height: 100%; max-width: 100%; object-fit: contain; cursor: zoom-in; }
+    .credential-media .fs-btn { position: absolute; right: .35rem; bottom: .35rem; display: inline-flex; align-items: center; justify-content: center; height: 2rem; width: 2rem; border-radius: .4rem; background: rgb(255 255 255 / .94); color: #1c1917; box-shadow: 0 1px 4px rgb(0 0 0 / .25); }
+    .credential-media .fs-btn:hover { background: #fff; }
+    .credential-media .fs-btn:focus-visible, .credential-verify:focus-visible, .credential-link:focus-visible { outline: 2px solid #2F6F4E; outline-offset: 2px; }
+    .credential-count { position: absolute; left: .35rem; top: .35rem; border-radius: 9999px; background: rgb(28 25 23 / .7); padding: .05rem .45rem; font-size: .7rem; color: #fff; }
+    .credential-body { min-width: 0; }
+    .credential-meta { font-size: .75rem; color: #78716c; }
+    .credential-title { margin-top: .2rem; font-weight: 600; line-height: 1.35; color: #3F281C; }
+    .credential-link:hover { color: #265A40; text-decoration: underline; text-underline-offset: 3px; }
+    .credential-line { margin-top: .35rem; font-size: .875rem; line-height: 1.55; color: #57534e; }
+    .credential-verify { display: inline-block; margin-top: .5rem; font-size: .8rem; font-weight: 500; color: #2F6F4E; border-radius: .25rem; }
+    .credential-verify:hover { text-decoration: underline; text-underline-offset: 3px; }
+    @media (max-width: 420px) { .credential { flex-direction: column; } .credential-media { width: 100%; flex-basis: auto; height: 11rem; } }
     #pm-gallery { scrollbar-color: rgb(255 255 255 / .35) transparent; }
     .pm-shot { position: relative; flex: 0 0 auto; height: clamp(240px, 46vh, 460px); }
     .pm-shot img { height: 100%; width: auto; max-width: 82vw; object-fit: contain; background: #fff; }
@@ -109,7 +125,6 @@
       <a href="#home" class="font-serif text-lg font-semibold text-bark-900">Khoa Tran Huu Le</a>
       <ul class="hidden items-center gap-6 lg:flex">
         <li><a class="nav-link" href="#about">About</a></li>
-        <li><a class="nav-link" href="#skills">Skills</a></li>
         <li><a class="nav-link" href="#projects">Projects</a></li>
         <li><a class="nav-link" href="#experience">Experience</a></li>
         <li><a class="nav-link" href="#achievements">Achievements</a></li>
@@ -124,7 +139,6 @@
     <div id="mobile-menu" class="hidden border-t border-bark-100 bg-white lg:hidden">
       <ul class="container-x space-y-1 py-3">
         <li><a class="mobile-link" href="#about">About</a></li>
-        <li><a class="mobile-link" href="#skills">Skills</a></li>
         <li><a class="mobile-link" href="#projects">Projects</a></li>
         <li><a class="mobile-link" href="#experience">Experience</a></li>
         <li><a class="mobile-link" href="#achievements">Achievements</a></li>
@@ -177,66 +191,6 @@
             <li class="chip-brown">Sustainable development</li>
             <li class="chip-brown">Program coordination</li>
           </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. Skills -->
-    <section id="skills" class="section">
-      <div class="container-x">
-        <p class="eyebrow">Skills</p>
-        <h2 class="section-title">Tools I use, and where I've used them</h2>
-        <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-
-          <div class="card">
-            <h3 class="text-lg font-semibold text-bark-900">Data &amp; Analytics</h3>
-            <ul class="mt-4 space-y-4 text-sm">
-              <li><span class="font-medium text-bark-900">Stata</span> <span class="text-stone-600">xtreg, panel data regression, logit</span><br><span class="text-xs text-stone-500">Used in the ACBES 2023 and UEH500 papers</span></li>
-              <li><span class="font-medium text-bark-900">Python</span> <span class="text-stone-600">Pandas, Matplotlib, Scikit-learn</span><br><span class="text-xs text-stone-500">Used in Big Data Analytics coursework (Google Colab)</span></li>
-              <li><span class="font-medium text-bark-900">Tableau</span><br><span class="text-xs text-stone-500">Used in the ESG scores and financial performance project</span></li>
-              <li><span class="font-medium text-bark-900">Power BI</span><br><span class="text-xs text-stone-500">Used in the Data Analytics Essentials course</span></li>
-              <li><span class="font-medium text-bark-900">Excel</span> <span class="text-stone-600">Solver, Data Tables, simulation</span><br><span class="text-xs text-stone-500">Used in the portfolio optimization project</span></li>
-              <li><span class="font-medium text-bark-900">Econometrics</span> <span class="text-stone-600">logit and probit, panel data, IV (2SLS), heterogeneity analysis</span><br><span class="text-xs text-stone-500">Research papers and coursework</span></li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3 class="text-lg font-semibold text-bark-900">Research &amp; Policy Methods</h3>
-            <ul class="bullets">
-              <li>Survey design and secondary dataset construction</li>
-              <li>Policy and legal document analysis</li>
-              <li>Semi-structured interviewing</li>
-              <li>Comparative case analysis</li>
-              <li>Systematic literature review</li>
-              <li>Rubric design and comparative coding</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3 class="text-lg font-semibold text-bark-900">Program &amp; Project Management</h3>
-            <ul class="bullets">
-              <li>International exchange coordination (about 50 participants, three countries)</li>
-              <li>Workshop design and cross-cultural facilitation</li>
-              <li>Stakeholder coordination and logistics</li>
-              <li>Workflow design with Lark and ERP tool evaluation</li>
-              <li>Google Project Management Certificate</li>
-            </ul>
-          </div>
-
-          <div class="card md:col-span-2 lg:col-span-3">
-            <h3 class="text-lg font-semibold text-bark-900">Languages</h3>
-            <div class="mt-4 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-              <ul class="flex flex-wrap gap-x-10 gap-y-2 text-sm">
-                <li><span class="font-medium text-bark-900">English</span> <span class="text-stone-600">Advanced (C1)</span></li>
-                <li><span class="font-medium text-bark-900">Vietnamese</span> <span class="text-stone-600">Native</span></li>
-              </ul>
-              <div class="flex flex-wrap items-center gap-2">
-                <span class="text-xs font-semibold uppercase tracking-wider text-stone-500">Also learning</span>
-                <span class="chip">French · beginner</span>
-                <span class="chip">Thai · beginner</span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -321,7 +275,7 @@
         <!-- Leadership & Volunteer -->
         <div class="project-group mt-12" data-group="leadership">
           <div class="flex items-end justify-between gap-4">
-            <h3 class="text-2xl font-semibold text-bark-900">Leadership &amp; Volunteer Activities</h3>
+            <h3 class="text-2xl font-semibold text-bark-900">Leadership Activities</h3>
             <button type="button" class="see-all-btn">See All</button>
           </div>
           <div class="carousel-viewport">
@@ -602,24 +556,66 @@
       <div class="container-x">
         <p class="eyebrow">Achievements &amp; Certificates</p>
         <h2 class="section-title">Recognition and credentials</h2>
+        <!-- Each <li class="credential"> lists image base names in data-images (web copies in images/web). -->
 
         <div class="mt-10 grid gap-10 lg:grid-cols-2">
           <div>
             <h3 class="text-lg font-semibold text-bark-900">Achievements</h3>
             <ul class="mt-4 space-y-4">
-              <li class="card"><p class="font-medium text-bark-900">His Majesty the King's Scholarship</p><p class="mt-1 text-sm text-stone-600">Royal Thai Government scholarship for the MSc at the Asian Institute of Technology.</p></li>
-              <li class="card"><p class="font-medium text-bark-900">UEH500 Award</p><p class="mt-1 text-sm text-stone-600">Research paper on shocks, household resource allocation and poverty in Vietnam.</p></li>
-              <li class="card"><p class="font-medium text-bark-900">High Distinction, GPA 3.85</p><p class="mt-1 text-sm text-stone-600">Bachelor of Investment Economics, University of Economics Ho Chi Minh City.</p></li>
-              <li class="card"><p class="font-medium text-bark-900">Presenter, ACBES 2023</p><p class="mt-1 text-sm text-stone-600">5th Asia Conference on Business and Economics, Ho Chi Minh City.</p></li>
-              <li class="card"><p class="font-medium text-bark-900">Participant, AIFOD Bangkok Summit 2026</p><p class="mt-1 text-sm text-stone-600">AI for Developing Countries Forum on building sovereign AI capacity, data sovereignty and inclusive finance.</p></li>
+              <li class="credential" data-images="ait_king_scholarship">
+                <div class="credential-media"></div>
+                <div class="credential-body">
+                  <p class="credential-meta">Royal Thai Government · 2025</p>
+                  <h4 class="credential-title">His Majesty the King's Scholarship</h4>
+                  <p class="credential-line">Awarded for the MSc in Business Analytics &amp; Digital Transformation at the Asian Institute of Technology, starting in the 2025 academic year.</p>
+                </div>
+              </li>
+              <li class="credential" data-images="ueh_scholarship">
+                <div class="credential-media"></div>
+                <div class="credential-body">
+                  <p class="credential-meta">University of Economics Ho Chi Minh City · 2024</p>
+                  <h4 class="credential-title">UEH Excellence Scholarship</h4>
+                  <p class="credential-line">Excellence level scholarship for outstanding performance in academic and extracurricular activities in the final semester of 2024.</p>
+                </div>
+              </li>
+              <li class="credential" data-images="p_r_2_2">
+                <div class="credential-media"></div>
+                <div class="credential-body">
+                  <p class="credential-meta">UEH Youth Union · Jan 2024</p>
+                  <h4 class="credential-title">UEH500 Award</h4>
+                  <p class="credential-line">Excellent Course Research Award UEH500 2023 for the paper on shocks, household resource allocation and poverty in Vietnam.</p>
+                </div>
+              </li>
+              <li class="credential" data-images="ueh_c2c_1 ueh_c2c_2">
+                <div class="credential-media"></div>
+                <div class="credential-body">
+                  <p class="credential-meta">UEH Youth Union · 2023</p>
+                  <h4 class="credential-title">Consolation Prize, C2C 2023</h4>
+                  <p class="credential-line">Sea to Sea (C2C) 2023 Olympia Contest, where my team of four proposed a new sustainable solution for circular batteries.</p>
+                </div>
+              </li>
             </ul>
           </div>
           <div>
             <h3 class="text-lg font-semibold text-bark-900">Certificates</h3>
             <ul class="mt-4 space-y-4">
-              <!-- To link a credential, wrap the title in <a href="YOUR_CREDENTIAL_URL" target="_blank" rel="noopener noreferrer"> -->
-              <li class="card"><p class="font-medium text-bark-900">Google Data Analytics Certificate</p><p class="mt-1 text-sm text-stone-600">Issued by Google.</p></li>
-              <li class="card"><p class="font-medium text-bark-900">Google Project Management Certificate</p><p class="mt-1 text-sm text-stone-600">Issued by Google.</p></li>
+              <li class="credential" data-images="gg_data_analytics">
+                <div class="credential-media"></div>
+                <div class="credential-body">
+                  <p class="credential-meta">Google · Coursera · Jul 2025</p>
+                  <h4 class="credential-title"><a href="https://coursera.org/verify/professional-cert/OKHHYBRJ28D0" target="_blank" rel="noopener noreferrer" class="credential-link">Google Data Analytics Professional Certificate<span class="sr-only"> (opens in a new tab)</span></a></h4>
+                  <p class="credential-line">Nine-course program covering data cleaning, analysis and visualization with spreadsheets, SQL, Tableau and R.</p>
+                  <a href="https://coursera.org/verify/professional-cert/OKHHYBRJ28D0" target="_blank" rel="noopener noreferrer" class="credential-verify">Verify credential <span aria-hidden="true">↗</span></a>
+                </div>
+              </li>
+              <li class="credential" data-images="ic3">
+                <div class="credential-media"></div>
+                <div class="credential-body">
+                  <p class="credential-meta">Certiport · Pearson VUE · Feb 2023</p>
+                  <h4 class="credential-title">IC3 Digital Literacy Certification (GS5)</h4>
+                  <p class="credential-line">Passed all three exams, covering Computing Fundamentals, Key Applications and Living Online.</p>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
