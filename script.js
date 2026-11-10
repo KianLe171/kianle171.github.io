@@ -241,6 +241,7 @@
         card.classList.toggle('is-dim', dim);
         $('.read-more-btn', card).tabIndex = dim ? -1 : 0;
       });
+      group.classList.toggle('is-static', cards.length <= perView);
       prev.disabled = index <= 0;
       next.disabled = index >= maxIndex();
     };

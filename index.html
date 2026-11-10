@@ -89,6 +89,7 @@
     .credential-verify { display: inline-block; margin-top: .5rem; font-size: .8rem; font-weight: 500; color: #2F6F4E; border-radius: .25rem; }
     .credential-verify:hover { text-decoration: underline; text-underline-offset: 3px; }
     @media (max-width: 420px) { .credential { flex-direction: column; } .credential-media { width: 100%; flex-basis: auto; height: 11rem; } }
+    .project-group.is-static .carousel-nav, .project-group.is-static .see-all-btn { visibility: hidden; }
     #pm-gallery { scrollbar-color: rgb(255 255 255 / .35) transparent; }
     .pm-shot { position: relative; flex: 0 0 auto; height: clamp(240px, 46vh, 460px); }
     .pm-shot img { height: 100%; width: auto; max-width: 82vw; object-fit: contain; background: #fff; }
@@ -346,6 +347,37 @@
             </div>
           </div>
           <div class="carousel-nav"><button type="button" class="carousel-prev" aria-label="Previous leadership projects">‹</button><button type="button" class="carousel-next" aria-label="Next leadership projects">›</button></div>
+        </div>
+
+        <!-- Volunteer -->
+        <div class="project-group mt-12" data-group="volunteer">
+          <div class="flex items-end justify-between gap-4">
+            <h3 class="text-2xl font-semibold text-bark-900">Volunteer Activities</h3>
+            <button type="button" class="see-all-btn">See All</button>
+          </div>
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+
+              <article class="project-card" data-images="soe_2 soe_1 soe_3">
+                <div class="project-card-head"><span class="badge badge-leaf">Volunteer</span><span>UEH School of Economics · Apr 2024</span></div>
+                <h4 class="project-card-title">Muôn Vạn Thanh Âm (Myriad Sounds): A Day with Hearing-Impaired Children</h4>
+                <p class="project-card-line">Ran a game booth for hearing-impaired children at Hy Vong School.</p>
+                <template class="project-details">
+                  <p class="project-desc">Muôn Vạn Thanh Âm, meaning Myriad Sounds, was the fourth activity in the Sinh viên Kinh tế 2024 series run by the Youth Union and Student Association of UEH's School of Economics, and it was dedicated to accompanying hearing-impaired children while raising awareness of hearing disabilities. On 10 April 2024, our volunteers spent the day at Hy Vong (Hope) School in District 6, Ho Chi Minh City, a school that specializes in supporting students with disabilities, including hearing impairments.</p>
+                  <h5 class="project-h">What I did</h5>
+                  <ul class="project-bullets"><li>Helped set up the stage and the activity area before the children arrived</li><li>Ran a game booth where children threw balls into cups to win gifts</li><li>Played with the children between activities and handed out gifts</li></ul>
+                  <h5 class="project-h">Result</h5>
+                  <div class="project-stats"><div><b>~100</b><span>students of Hy Vong School took part</span></div><div><b>1</b><span>day of games and activities</span></div><div><b>4th</b><span>activity in the Sinh viên Kinh tế 2024 series</span></div></div>
+                  <ul class="project-bullets"><li>Around 100 students spent the day playing games, receiving gifts and sharing activities with UEH volunteers</li></ul>
+                  <h5 class="project-h">What I gained</h5>
+                  <p class="project-desc">Spending a day with children who live with a hearing impairment reminded me that inclusion is rarely about grand programs and far more about whether someone takes the time to play, wait and understand. It was a small activity, yet it connected directly to the reason I care about this work, which is that every child deserves to feel seen and cared for.</p>
+                  <ul class="project-chips"><li>Volunteering</li><li>Inclusion</li><li>Disability awareness</li><li>Working with children</li></ul>
+                </template>
+              </article>
+
+            </div>
+          </div>
+          <div class="carousel-nav"><button type="button" class="carousel-prev" aria-label="Previous volunteer activities">‹</button><button type="button" class="carousel-next" aria-label="Next volunteer activities">›</button></div>
         </div>
 
         <!-- Academic -->
